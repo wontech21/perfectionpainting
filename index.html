@@ -1557,19 +1557,14 @@ document.getElementById('estimateForm').addEventListener('submit', function(e) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
   
-  // --- UNCOMMENT AND EDIT FOR FORMSPREE ---
-  // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(data)
-  // }).then(r => {
-  //   if (r.ok) showSuccess();
-  //   else showToast('Something went wrong. Please call us directly.');
-  // }).catch(() => showToast('Something went wrong. Please call us directly.'));
-  
-  // Demo mode — show success
-  console.log('Estimate Request:', data);
-  showSuccess();
+  fetch('https://formspree.io/f/xwvnnara', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(r => {
+    if (r.ok) showSuccess();
+    else showToast('Something went wrong. Please call us at (978) 818-0225.');
+  }).catch(() => showToast('Something went wrong. Please call us at (978) 818-0225.'));
   
   function showSuccess() {
     form.style.display = 'none';
