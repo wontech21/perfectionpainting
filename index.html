@@ -63,19 +63,24 @@ body {
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: var(--transition);
+  flex-shrink: 0;
 }
 .nav.scrolled .nav-logo { color: var(--green-deep); }
 .nav-logo span { color: var(--green-light); }
 .nav.scrolled .nav-logo span { color: var(--green-primary); }
 
-.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 0; list-style: none; flex: 1; justify-content: space-evenly; margin: 0 2rem; }
+.nav-links li { text-align: center; }
 .nav-links a {
   color: rgba(255,255,255,0.85);
   text-decoration: none;
-  font-size: 0.9rem; font-weight: 400;
+  font-size: 0.95rem; font-weight: 400;
   letter-spacing: 0.3px;
   transition: var(--transition);
   position: relative;
+  padding: 0.5rem 0.6rem;
+  display: block;
+  white-space: nowrap;
 }
 .nav.scrolled .nav-links a { color: var(--text-mid); }
 .nav-links a:hover { color: var(--white); }
@@ -84,10 +89,12 @@ body {
 .nav-cta {
   background: var(--green-primary) !important;
   color: var(--white) !important;
-  padding: 0.6rem 1.4rem;
+  padding: 0.55rem 1.3rem;
   border-radius: var(--radius);
   font-weight: 500;
   transition: var(--transition);
+  font-size: 0.95rem;
+  white-space: nowrap;
 }
 .nav-cta:hover { background: var(--green-mid) !important; transform: translateY(-1px); }
 
@@ -95,6 +102,7 @@ body {
   display: flex; align-items: center; gap: 0.4rem;
   color: rgba(255,255,255,0.9) !important;
   font-weight: 500;
+  white-space: nowrap;
 }
 .nav.scrolled .nav-phone { color: var(--green-deep) !important; }
 
@@ -205,13 +213,22 @@ body {
 }
 
 .hero-sub {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: rgba(255,255,255,0.7);
-  max-width: 550px;
+  max-width: 650px;
   margin: 0 auto 2.5rem;
   font-weight: 300;
   line-height: 1.7;
   animation: fadeInUp 0.8s ease 0.3s both;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.hero-divider {
+  color: var(--green-light);
+  opacity: 0.6;
 }
 
 .hero-actions {
@@ -554,10 +571,21 @@ body {
 /* ============ ESTIMATE / BOOKING ============ */
 .estimate { background: var(--white); }
 .estimate-layout {
+  margin-top: 3.5rem;
+}
+.estimate-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 3.5rem;
+  gap: 2.5rem;
+}
+.estimate-bottom {
+  margin-top: 1.5rem;
+}
+.estimate-bottom .form-submit {
+  width: 100%;
+}
+.checkbox-group--single {
+  grid-template-columns: 1fr;
 }
 
 .form-group { margin-bottom: 1.2rem; }
@@ -588,6 +616,56 @@ body {
 .form-textarea { resize: vertical; min-height: 100px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
+.checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border: 1.5px solid var(--green-pale);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  background: var(--white);
+  user-select: none;
+}
+.checkbox-item:hover { border-color: var(--green-mid); background: var(--green-whisper); }
+.checkbox-item input[type="checkbox"] { display: none; }
+.checkmark {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--green-pale);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.checkmark::after {
+  content: '';
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  background: var(--green-primary);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+.checkbox-item input[type="checkbox"]:checked ~ .checkmark {
+  border-color: var(--green-primary);
+}
+.checkbox-item input[type="checkbox"]:checked ~ .checkmark::after {
+  transform: scale(1);
+}
+.checkbox-item:has(input:checked) {
+  border-color: var(--green-primary);
+  background: var(--green-whisper);
+  color: var(--green-deep);
+  font-weight: 500;
+}
+
 .form-submit {
   width: 100%;
   padding: 1rem;
@@ -605,126 +683,7 @@ body {
 }
 .form-submit:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
-/* Calendar */
-.calendar-panel {
-  background: var(--green-whisper);
-  border-radius: 10px;
-  padding: 2rem;
-}
-.calendar-panel h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--green-deep);
-  margin-bottom: 0.3rem;
-}
-.calendar-panel .cal-subtitle {
-  font-size: 0.85rem;
-  color: var(--text-light);
-  margin-bottom: 1.5rem;
-}
-.calendar-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 1rem;
-}
-.calendar-nav button {
-  background: none; border: none; cursor: pointer;
-  color: var(--green-primary);
-  font-size: 1.2rem;
-  padding: 0.3rem;
-  transition: var(--transition);
-  border-radius: 50%;
-  width: 32px; height: 32px;
-  display: flex; align-items: center; justify-content: center;
-}
-.calendar-nav button:hover { background: var(--green-pale); }
-.calendar-month {
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--green-deep);
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  text-align: center;
-}
-.cal-day-header {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.4rem 0;
-}
-.cal-day {
-  aspect-ratio: 1;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.85rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: var(--transition);
-  color: var(--text-mid);
-  position: relative;
-  font-weight: 400;
-}
-.cal-day:hover:not(.cal-day--empty):not(.cal-day--unavailable):not(.cal-day--past) {
-  background: var(--green-primary);
-  color: var(--white);
-}
-.cal-day--available {
-  background: var(--white);
-  color: var(--green-deep);
-  font-weight: 500;
-  border: 1px solid var(--green-pale);
-}
-.cal-day--available::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--green-primary);
-}
-.cal-day--unavailable {
-  color: var(--text-light);
-  opacity: 0.4;
-  cursor: not-allowed;
-  text-decoration: line-through;
-}
-.cal-day--past {
-  color: var(--text-light);
-  opacity: 0.3;
-  cursor: default;
-}
-.cal-day--selected {
-  background: var(--green-primary) !important;
-  color: var(--white) !important;
-  font-weight: 600;
-}
-.cal-day--selected::after { background: var(--white) !important; }
-.cal-day--empty { cursor: default; }
-.cal-day--today {
-  border: 2px solid var(--green-primary);
-}
-
-.cal-legend {
-  display: flex; gap: 1.2rem; margin-top: 1.2rem;
-  flex-wrap: wrap;
-}
-.cal-legend-item {
-  display: flex; align-items: center; gap: 0.4rem;
-  font-size: 0.75rem;
-  color: var(--text-light);
-}
-.cal-legend-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-}
-.cal-legend-dot--available { background: var(--green-primary); }
-.cal-legend-dot--unavailable { background: var(--text-light); opacity: 0.4; }
-.cal-legend-dot--selected { background: var(--green-primary); border: 2px solid var(--green-deep); }
+/* Calendar removed */
 
 .contact-info-box {
   margin-top: 1.5rem;
@@ -858,6 +817,15 @@ body {
   font-size: 0.78rem;
   color: rgba(255,255,255,0.25);
 }
+.footer-credit { letter-spacing: 0.3px; }
+.wontech-link {
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+.wontech-link:hover { color: var(--green-light); }
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeInUp {
@@ -921,8 +889,17 @@ body {
 @media (max-width: 768px) {
   .nav { padding: 1rem 1.5rem; }
   .nav.scrolled { padding: 0.8rem 1.5rem; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .nav-links {
+    display: flex !important;
+    gap: 0;
+    flex-wrap: nowrap;
+    flex: 1;
+    margin: 0 1rem;
+    justify-content: space-evenly;
+  }
+  .nav-links a { font-size: 0.78rem; padding: 0.5rem 0.3rem; }
+  .nav-cta { padding: 0.4rem 0.8rem !important; font-size: 0.75rem !important; }
+  .nav-phone span, .nav-phone svg { display: inline; }
 
   .hero { min-height: 90vh; }
   .hero h1 { font-size: 2.8rem; }
@@ -942,17 +919,37 @@ body {
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .about-photo { aspect-ratio: 16/10; }
 
-  .estimate-layout { grid-template-columns: 1fr; }
+  .estimate-columns { grid-template-columns: 1fr; gap: 1.5rem; }
 
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
 
 @media (max-width: 480px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
+  .nav.scrolled { padding: 0.6rem 1rem; }
+  .nav-links {
+    display: flex !important;
+    gap: 0;
+    order: 3;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-top: 0.3rem;
+    flex: auto;
+    margin: 0;
+  }
+  .nav-links a { font-size: 0.68rem; padding: 0.4rem 0.2rem; }
+  .nav-cta { padding: 0.35rem 0.7rem !important; font-size: 0.7rem !important; }
+  .nav-phone { font-size: 0.7rem; }
   .hero h1 { font-size: 2.2rem; }
   .btn { padding: 0.8rem 1.5rem; font-size: 0.88rem; }
   .hero-actions { flex-direction: column; }
   .form-row { grid-template-columns: 1fr; }
+  .checkbox-group { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .stat-number { font-size: 1.8rem; }
   .portfolio-grid { grid-template-columns: 1fr; }
@@ -985,13 +982,13 @@ body {
     <li><a href="#portfolio">Our Work</a></li>
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="tel:9788180225" class="nav-phone">
+    <li><a href="tel:6174597218" class="nav-phone">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      (978) 818-0225
+      (617) 459-7218
     </a></li>
     <li><a href="#estimate" class="nav-cta">Free Estimate</a></li>
   </ul>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu" style="display:none!important">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -1003,7 +1000,7 @@ body {
   <a href="#portfolio" onclick="closeMobile()">Our Work</a>
   <a href="#reviews" onclick="closeMobile()">Reviews</a>
   <a href="#about" onclick="closeMobile()">About</a>
-  <a href="tel:9788180225" onclick="closeMobile()">(978) 818-0225</a>
+  <a href="tel:6174597218" onclick="closeMobile()">(617) 459-7218</a>
   <a href="#estimate" onclick="closeMobile()" class="btn btn-green">Free Estimate</a>
 </div>
 
@@ -1014,17 +1011,21 @@ body {
   </div>
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge">Serving the North Shore &amp; Boston</div>
     <h1>Where Craftsmanship Meets <em>Perfection</em></h1>
-    <p class="hero-sub">
-      Premium residential &amp; commercial painting services 
-      across the North Shore and Boston. Quality finishes that stand the test of time.
-    </p>
+    <div class="hero-sub">
+      <span>Nearly 20 Years of Experience</span>
+      <span class="hero-divider">•</span>
+      <span>Fully Licensed &amp; Insured</span>
+      <span class="hero-divider">•</span>
+      <span>Premium Paints &amp; Materials</span>
+      <span class="hero-divider">•</span>
+      <span>North Shore &amp; Boston</span>
+    </div>
     <div class="hero-actions">
       <a href="#estimate" class="btn btn-primary">Get a Free Estimate</a>
-      <a href="tel:9788180225" class="btn btn-outline">
+      <a href="tel:6174597218" class="btn btn-outline">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        (978) 818-0225
+        (617) 459-7218
       </a>
     </div>
   </div>
@@ -1039,7 +1040,7 @@ body {
     <div class="reveal">
       <div class="section-label">What We Do</div>
       <h2 class="section-title">Expert Services, Flawless Results</h2>
-      <p class="section-desc">From interior detail work to full exterior transformations, every project gets the Perfection treatment.</p>
+      <p class="section-desc">Fully licensed and insured with nearly 20 years of experience. We deliver unprecedented craftsmanship using only the highest quality paints and materials — because your space deserves nothing less.</p>
     </div>
     <div class="services-grid reveal">
       <div class="service-card">
@@ -1083,6 +1084,27 @@ body {
         </div>
         <h3>Decks &amp; Fences</h3>
         <p>Painting, staining, and refinishing for decks, fences, and outdoor structures. Built to withstand New England weather.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        </div>
+        <h3>Water Damage Repair</h3>
+        <p>Expert restoration of water-damaged walls, ceilings, and surfaces. We repair, prime, and refinish to eliminate all traces of damage.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Plaster Repair</h3>
+        <p>Seamless plaster patching, skim coating, and restoration. We bring damaged walls and ceilings back to a flawless, smooth finish.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+        </div>
+        <h3>Cabinet Refinishing</h3>
+        <p>Transform your kitchen or bathroom with professionally refinished cabinets. A fraction of the cost of replacement with stunning results.</p>
       </div>
     </div>
   </div>
@@ -1229,23 +1251,23 @@ body {
         <div class="section-label">About Us</div>
         <h2>Built on Quality.<br>Driven by Pride.</h2>
         <p>
-          Perfection Painting was founded by <strong>Wendell Nunes</strong> with a simple belief: every surface deserves to be treated with care, skill, and respect. What started as a dedication to flawless finishes has grown into a trusted name across the North Shore and Boston.
+          Perfection Painting was founded by <strong>Wendell Nunes</strong> with a simple belief: every surface deserves to be treated with care, skill, and respect. With nearly 20 years of hands-on experience, what started as a dedication to flawless finishes has grown into a trusted name across the North Shore and Boston.
         </p>
         <p>
-          Whether it's a family home, a commercial storefront, or a weathered deck, we bring the same level of precision and professionalism to every job. Our clients don't just get a paint job — they get the peace of mind that comes with working with someone who treats their property like his own.
+          We are fully licensed and insured, committed to unprecedented craftsmanship using only the highest quality paints and materials. Whether it's a family home, a commercial storefront, or a weathered deck, we bring the same level of precision and professionalism to every job. Our clients don't just get a paint job — they get the peace of mind that comes with working with someone who treats their property like his own.
         </p>
         <div class="about-stats">
           <div>
-            <div class="stat-number">100+</div>
-            <div class="stat-label">Projects Done</div>
+            <div class="stat-number">18</div>
+            <div class="stat-label">Years Experience</div>
           </div>
           <div>
             <div class="stat-number">5★</div>
             <div class="stat-label">Google Rating</div>
           </div>
           <div>
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Satisfaction</div>
+            <div class="stat-number">✓</div>
+            <div class="stat-label">Licensed &amp; Insured</div>
           </div>
         </div>
       </div>
@@ -1262,85 +1284,77 @@ body {
       <p class="section-desc" style="margin:0 auto;">Fill out the form and pick a date that works for you. We'll confirm within 24 hours.</p>
     </div>
     <div class="estimate-layout reveal">
-      <!-- Contact Form -->
+      <!-- Left Column: Contact Fields + Project Details -->
       <div>
         <form id="estimateForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Full Name *</label>
-              <input type="text" class="form-input" name="name" required placeholder="Your name">
+          <div class="estimate-columns">
+            <div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" class="form-input" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-input" name="phone" required placeholder="(000) 000-0000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-input" name="email" required placeholder="you@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Property Address</label>
+                <input type="text" class="form-input" name="address" placeholder="123 Main St, Gloucester, MA">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Project Details</label>
+                <textarea class="form-textarea" name="details" placeholder="Tell us about your project — size, rooms, any special requests..."></textarea>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Phone Number *</label>
-              <input type="tel" class="form-input" name="phone" required placeholder="(000) 000-0000">
+            <!-- Right Column: Services Checklist + Contact -->
+            <div>
+              <div class="form-group">
+                <label class="form-label">Services Needed (select all that apply)</label>
+                <div class="checkbox-group checkbox-group--single">
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Interior Painting"><span class="checkmark"></span>Interior Painting</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Exterior Painting"><span class="checkmark"></span>Exterior Painting</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Power Washing"><span class="checkmark"></span>Power Washing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Staining & Wood Finishing"><span class="checkmark"></span>Staining &amp; Wood Finishing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Deck & Fence"><span class="checkmark"></span>Deck &amp; Fence</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Water Damage Repair"><span class="checkmark"></span>Water Damage Repair</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Plaster Repair"><span class="checkmark"></span>Plaster Repair</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Cabinet Refinishing"><span class="checkmark"></span>Cabinet Refinishing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Commercial"><span class="checkmark"></span>Commercial</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Other"><span class="checkmark"></span>Other</label>
+                </div>
+              </div>
+              <div class="contact-info-box">
+                <h4>Contact Directly</h4>
+                <div class="contact-info-item">
+                  <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  <a href="tel:6174597218">(617) 459-7218</a>
+                </div>
+                <div class="contact-info-item">
+                  <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
+                </div>
+                <div class="contact-info-item">
+                  <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>North Shore &amp; Boston, MA</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Email Address *</label>
-            <input type="email" class="form-input" name="email" required placeholder="you@email.com">
+          <!-- Full Width: Contact Info + Submit -->
+          <div class="estimate-bottom">
+            <button type="submit" class="form-submit">Request Estimate →</button>
           </div>
-          <div class="form-group">
-            <label class="form-label">Property Address</label>
-            <input type="text" class="form-input" name="address" placeholder="123 Main St, Gloucester, MA">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Type of Service</label>
-            <select class="form-select" name="service">
-              <option value="">Select a service...</option>
-              <option>Interior Painting</option>
-              <option>Exterior Painting</option>
-              <option>Power Washing</option>
-              <option>Staining & Wood Finishing</option>
-              <option>Deck & Fence</option>
-              <option>Commercial</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Project Details</label>
-            <textarea class="form-textarea" name="details" placeholder="Tell us about your project — size, rooms, any special requests..."></textarea>
-          </div>
-          <input type="hidden" name="preferred_date" id="selectedDateInput" value="">
-          <button type="submit" class="form-submit">Request Estimate →</button>
         </form>
         <div class="form-success" id="formSuccess">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <h3>Request Received!</h3>
           <p>Wendell will review your request and get back to you within 24 hours to confirm your estimate appointment.</p>
-        </div>
-      </div>
-
-      <!-- Calendar + Contact -->
-      <div>
-        <div class="calendar-panel">
-          <h3>Pick a Preferred Date</h3>
-          <p class="cal-subtitle">Green dots show available estimate slots</p>
-          <div class="calendar-nav">
-            <button id="calPrev">&#8592;</button>
-            <span class="calendar-month" id="calMonth"></span>
-            <button id="calNext">&#8594;</button>
-          </div>
-          <div class="calendar-grid" id="calGrid"></div>
-          <div class="cal-legend">
-            <div class="cal-legend-item"><div class="cal-legend-dot cal-legend-dot--available"></div> Available</div>
-            <div class="cal-legend-item"><div class="cal-legend-dot cal-legend-dot--unavailable"></div> Unavailable</div>
-          </div>
-        </div>
-
-        <div class="contact-info-box">
-          <h4>Contact Directly</h4>
-          <div class="contact-info-item">
-            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            <a href="tel:9788180225">(978) 818-0225</a>
-          </div>
-          <div class="contact-info-item">
-            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
-          </div>
-          <div class="contact-info-item">
-            <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>North Shore &amp; Boston, MA</span>
-          </div>
         </div>
       </div>
     </div>
@@ -1373,13 +1387,16 @@ body {
           <li><a href="#services">Power Washing</a></li>
           <li><a href="#services">Staining</a></li>
           <li><a href="#services">Decks &amp; Fences</a></li>
+          <li><a href="#services">Water Damage Repair</a></li>
+          <li><a href="#services">Plaster Repair</a></li>
+          <li><a href="#services">Cabinet Refinishing</a></li>
         </ul>
       </div>
       <div>
         <h4>Get in Touch</h4>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          <a href="tel:9788180225">(978) 818-0225</a>
+          <a href="tel:6174597218">(617) 459-7218</a>
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1393,7 +1410,7 @@ body {
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Perfection Painting. All rights reserved.</span>
-      <span>perfectionpaintingusa.com</span>
+      <span class="footer-credit">Designed &amp; Managed by <a href="#" class="wontech-link">WONTECH</a></span>
     </div>
   </div>
 </footer>
@@ -1435,90 +1452,6 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-/* ---- CALENDAR ----
-   AVAILABILITY CONFIG:
-   Edit the 'availableDates' array below to control which dates show as available.
-   Format: 'YYYY-MM-DD'
-   In production, this could be fetched from a Google Sheet, Airtable, or simple JSON API.
-*/
-const availableDates = [
-  // ===== EDIT THESE DATES TO SET AVAILABILITY =====
-  '2026-02-23', '2026-02-24', '2026-02-25', '2026-02-27',
-  '2026-03-02', '2026-03-03', '2026-03-05', '2026-03-06',
-  '2026-03-09', '2026-03-10', '2026-03-12', '2026-03-13',
-  '2026-03-16', '2026-03-17', '2026-03-19', '2026-03-20',
-  '2026-03-23', '2026-03-24', '2026-03-26', '2026-03-27',
-  '2026-03-30', '2026-03-31',
-  '2026-04-02', '2026-04-03', '2026-04-07', '2026-04-09',
-  '2026-04-10', '2026-04-14', '2026-04-16', '2026-04-17',
-  // ================================================
-];
-
-let calDate = new Date();
-let selectedDate = null;
-const calMonth = document.getElementById('calMonth');
-const calGrid = document.getElementById('calGrid');
-
-function renderCalendar() {
-  const year = calDate.getFullYear();
-  const month = calDate.getMonth();
-  const today = new Date();
-  today.setHours(0,0,0,0);
-  
-  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  calMonth.textContent = months[month] + ' ' + year;
-
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  let html = '';
-  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d => {
-    html += `<div class="cal-day-header">${d}</div>`;
-  });
-
-  for (let i = 0; i < firstDay; i++) {
-    html += '<div class="cal-day cal-day--empty"></div>';
-  }
-
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    const dateObj = new Date(year, month, day);
-    const isPast = dateObj < today;
-    const isToday = dateObj.getTime() === today.getTime();
-    const isAvailable = availableDates.includes(dateStr);
-    const isSelected = selectedDate === dateStr;
-
-    let classes = 'cal-day';
-    if (isPast) classes += ' cal-day--past';
-    else if (isAvailable) classes += ' cal-day--available';
-    else classes += ' cal-day--unavailable';
-    if (isToday) classes += ' cal-day--today';
-    if (isSelected) classes += ' cal-day--selected';
-
-    html += `<div class="${classes}" data-date="${dateStr}" onclick="selectDate('${dateStr}', ${isPast}, ${isAvailable})">${day}</div>`;
-  }
-  calGrid.innerHTML = html;
-}
-
-function selectDate(dateStr, isPast, isAvailable) {
-  if (isPast || !isAvailable) return;
-  selectedDate = dateStr;
-  document.getElementById('selectedDateInput').value = dateStr;
-  renderCalendar();
-  showToast('Date selected: ' + new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric'}));
-}
-
-document.getElementById('calPrev').addEventListener('click', () => {
-  calDate.setMonth(calDate.getMonth() - 1);
-  renderCalendar();
-});
-document.getElementById('calNext').addEventListener('click', () => {
-  calDate.setMonth(calDate.getMonth() + 1);
-  renderCalendar();
-});
-
-renderCalendar();
-
 // ---- TOAST ----
 function showToast(msg) {
   const toast = document.getElementById('toast');
@@ -1557,14 +1490,19 @@ document.getElementById('estimateForm').addEventListener('submit', function(e) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
   
+  // Collect all checked services into a single string
+  const checkedServices = [...form.querySelectorAll('input[name="services"]:checked')]
+    .map(cb => cb.value).join(', ');
+  data.services = checkedServices || 'None selected';
+  
   fetch('https://formspree.io/f/xwvnnara', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   }).then(r => {
     if (r.ok) showSuccess();
-    else showToast('Something went wrong. Please call us at (978) 818-0225.');
-  }).catch(() => showToast('Something went wrong. Please call us at (978) 818-0225.'));
+    else showToast('Something went wrong. Please call us at (617) 459-7218.');
+  }).catch(() => showToast('Something went wrong. Please call us at (617) 459-7218.'));
   
   function showSuccess() {
     form.style.display = 'none';
