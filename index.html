@@ -403,51 +403,85 @@ body {
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  background: var(--green-whisper);
-  border: 2px dashed var(--green-pale);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
   transition: var(--transition);
+}
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+.portfolio-item.hidden {
+  display: none;
 }
 .portfolio-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
-.portfolio-item-placeholder {
-  color: var(--green-light);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  text-align: center;
-}
-.portfolio-item-placeholder svg {
-  width: 32px; height: 32px;
-  stroke: var(--green-light);
-  fill: none;
-  margin-bottom: 0.5rem;
-  display: block;
-  margin-left: auto; margin-right: auto;
-}
-.portfolio-item:hover { border-color: var(--green-mid); background: var(--green-pale); }
 
-/* Video placeholder */
-.portfolio-video {
-  grid-column: span 3;
-  aspect-ratio: 21/9;
-  background: var(--green-deep);
-  border: none;
-  display: flex; align-items: center; justify-content: center;
+/* ============ LIGHTBOX ============ */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.portfolio-video .portfolio-item-placeholder { color: rgba(255,255,255,0.5); }
-.portfolio-video .portfolio-item-placeholder svg { stroke: rgba(255,255,255,0.4); }
-.play-btn {
-  width: 72px; height: 72px;
+.lightbox.active { display: flex; }
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transition: opacity 0.3s ease;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  background: none; border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10001;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: #fff; }
+.lightbox-nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  border: 2px solid rgba(255,255,255,0.2);
+  width: 52px; height: 52px;
   display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 0.8rem;
-  transition: var(--transition);
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10001;
 }
-.portfolio-video:hover .play-btn { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); }
-.play-btn svg { width: 28px; height: 28px; fill: rgba(255,255,255,0.7); stroke: none; }
+.lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+.lightbox-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
 
 /* ============ REVIEWS ============ */
 .reviews { background: var(--green-deep); color: var(--white); }
@@ -509,6 +543,71 @@ body {
   font-size: 0.78rem;
   color: rgba(255,255,255,0.4);
   margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.review-source {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: rgba(255,255,255,0.5);
+}
+
+.google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50px;
+  padding: 0.55rem 1.3rem 0.55rem 1rem;
+  text-decoration: none;
+  transition: var(--transition);
+  backdrop-filter: blur(4px);
+}
+.google-badge:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-1px);
+}
+.google-icon { flex-shrink: 0; }
+.angi-icon { flex-shrink: 0; border-radius: 4px; }
+.google-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.google-badge-stars {
+  color: #FBBC05;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.google-badge-label {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.google-badge-arrow {
+  color: rgba(255,255,255,0.4);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.google-badge:hover .google-badge-arrow { color: rgba(255,255,255,0.8); }
+.review-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
 }
 
 /* ============ ABOUT ============ */
@@ -882,7 +981,7 @@ body {
   .portfolio-item:nth-child(1) { grid-column: span 2; }
   .portfolio-video { grid-column: span 2; }
   .reviews-track { grid-template-columns: 1fr 1fr; }
-  .review-card:nth-child(3) { display: none; }
+  .review-card:nth-child(3) { display: block; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
 
@@ -914,7 +1013,6 @@ body {
   .portfolio-video { grid-column: span 2; aspect-ratio: 16/9; }
 
   .reviews-track { grid-template-columns: 1fr; }
-  .review-card:nth-child(3) { display: block; }
 
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .about-photo { aspect-ratio: 16/10; }
@@ -988,21 +1086,7 @@ body {
     </a></li>
     <li><a href="#estimate" class="nav-cta">Free Estimate</a></li>
   </ul>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menu" style="display:none!important">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="close-btn" id="closeMenu">&times;</button>
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#portfolio" onclick="closeMobile()">Our Work</a>
-  <a href="#reviews" onclick="closeMobile()">Reviews</a>
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="tel:6174597218" onclick="closeMobile()">(617) 459-7218</a>
-  <a href="#estimate" onclick="closeMobile()" class="btn btn-green">Free Estimate</a>
-</div>
 
 <!-- ======== HERO ======== -->
 <section class="hero" id="hero">
@@ -1128,44 +1212,35 @@ body {
       </div>
     </div>
     <div class="portfolio-grid reveal">
-      <div class="portfolio-item">
-        <div class="portfolio-item-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Featured Project Photo
-        </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/exterior-colonial.jpg" alt="Colonial home exterior painting" loading="lazy">
       </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Before / After
-        </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/interior-entryway.jpg" alt="Interior entryway with wainscoting" loading="lazy">
       </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Project Photo
-        </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/exterior-cape-flag.jpg" alt="Cape style home exterior" loading="lazy">
       </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Project Photo
-        </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/interior-blue-living.jpg" alt="Interior living room painting" loading="lazy">
       </div>
-      <div class="portfolio-item">
-        <div class="portfolio-item-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Project Photo
-        </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/exterior-deck.jpg" alt="Deck staining and painting" loading="lazy">
       </div>
-      <!-- Video Placeholder -->
-      <div class="portfolio-item portfolio-video">
-        <div class="portfolio-item-placeholder">
-          <div class="play-btn">
-            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </div>
-          Add a Project Video Here
-        </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/interior-modern-living.jpg" alt="Modern interior painting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/interior-wood-paneled.jpg" alt="Wood paneled room restoration" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/exterior-yellow-colonial.jpg" alt="Yellow colonial exterior painting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/interior-builtins.jpg" alt="Interior with built-in bookshelves" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="residential">
+        <img src="images/work-in-progress.jpg" alt="Painting work in progress" loading="lazy">
       </div>
     </div>
   </div>
@@ -1177,7 +1252,30 @@ body {
     <div class="reveal" style="text-align:center; margin-bottom: 0;">
       <div class="section-label" style="justify-content:center;">Testimonials</div>
       <h2 class="section-title" style="margin:0 auto 0.5rem;">What Our Clients Say</h2>
-      <p class="section-desc" style="margin:0 auto;">Real feedback from homeowners and businesses across the North Shore and Boston.</p>
+      <p class="section-desc" style="margin:0 auto 1.5rem;">Real feedback from homeowners and businesses across the North Shore and Boston.</p>
+      <div class="review-badges">
+      <a href="https://www.google.com/maps/place/Perfection+Painting+Co./data=!4m2!3m1!1s0x0:0x704a1201746386c5?sa=X&amp;ved=1t:2428&amp;ictx=111" target="_blank" rel="noopener" class="google-badge">
+        <svg class="google-icon" viewBox="0 0 24 24" width="22" height="22">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <div class="google-badge-text">
+          <span class="google-badge-stars">★★★★★</span>
+          <span class="google-badge-label">5.0 on Google Reviews</span>
+        </div>
+        <svg class="google-badge-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="https://www.angi.com/companylist/us/ma/ipswich/perfection-painting-co-reviews-7825318.htm" target="_blank" rel="noopener" class="google-badge angi-badge">
+        <svg class="angi-icon" viewBox="0 0 1115 1514" width="20" height="27"><path fill-rule="evenodd" fill="#ff6153" d="m1115 1367.3h-229.9l-12.1-88.8c-20.8-158.5-104.4-304.9-242.5-337.6-36.4-12-76.3-19.5-114.3-19.5-37.1 0-70.6 5.6-102.7 17.1-102.2 36.2-195 128.6-193.8 246.4 0.5 42.1 13 67.2 34.3 89.5 16.8 17.5 41.3 24.5 61.4 17.7 33.2-11.4 48.8-51.3 60.9-118.2l37.2-235.4c118 67.6 179.7 181.9 173.7 297.5q0-0.2 0-0.2c-21 103.4-65.8 216.6-200.7 263-28.4 9.9-57.8 14.5-87.1 14.5-74.9 0-149.1-30.8-203.7-87.8-60.2-63.2-93.8-140.1-94.8-238.6-2.2-235.6 192.2-446.2 442.5-479.5 2.6-0.4 5-0.4 7.4-0.7l113.4-706.2h331.3zm-307.5-587.1l-73.6-563.8h-8.2l-65.8 505.3c51.1 13.2 100.9 33.1 147.6 58.5zm-220.2 455.4zm0 0.3z"/><path fill="#a03027" d="m413.5 938.5c32.1-11.5 65.4-17.1 102.7-17.1 38 0 77.9 7.5 114.1 19.5-4.8 55.9-31.5 245.6-43.1 295.1 6-115.6-55.7-229.9-173.7-297.5z"/></svg>
+        <div class="google-badge-text">
+          <span class="google-badge-stars">★★★★★</span>
+          <span class="google-badge-label">5.0 on Angi</span>
+        </div>
+        <svg class="google-badge-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      </div>
     </div>
     <div class="reviews-container reveal">
       <div class="reviews-track">
@@ -1190,12 +1288,12 @@ body {
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p class="review-text">"Replace this with a real customer review. Perfection Painting transformed our living room — the attention to detail was incredible and the crew was respectful and professional throughout."</p>
+          <p class="review-text">"Wendell and his team did a wonderful job painting the exterior of our house. Wendell is extremely detail oriented and a perfectionist when it comes to his craft, and his work is a reflection of that. Not only was the quality of the job excellent but the professionalism exceeded our expectations. The team at Perfection Painting were neat and organized and a pleasure to have around. We love how our house looks now and would 100% use Perfection Painting again."</p>
           <div class="review-author">
-            <div class="review-avatar">JD</div>
+            <div class="review-avatar">ES</div>
             <div>
-              <div class="review-name">Customer Name</div>
-              <div class="review-location">Gloucester, MA</div>
+              <div class="review-name">Emily S.</div>
+              <div class="review-location">Newburyport, MA <span class="review-source">via Google</span></div>
             </div>
           </div>
         </div>
@@ -1208,12 +1306,12 @@ body {
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p class="review-text">"Replace this with another customer review. The exterior of our house looks brand new. Wendell and his team went above and beyond — we couldn't be happier with the results."</p>
+          <p class="review-text">"We have relied on Wendell's painting for 22 years over several homes. His work is meticulous, he cleans up carefully, is punctual and his prices are good. Highly recommend."</p>
           <div class="review-author">
-            <div class="review-avatar">SM</div>
+            <div class="review-avatar">TC</div>
             <div>
-              <div class="review-name">Customer Name</div>
-              <div class="review-location">Rockport, MA</div>
+              <div class="review-name">Tina Cassidy</div>
+              <div class="review-location">Boston, MA <span class="review-source">via Google</span></div>
             </div>
           </div>
         </div>
@@ -1226,12 +1324,102 @@ body {
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
-          <p class="review-text">"Replace with a real review. We hired Perfection Painting for our commercial space and they delivered on time and on budget. Professional from the first call to the final walkthrough."</p>
+          <p class="review-text">"I hired Perfection Painting to paint my entire condo, including the ceiling, trim, and doors. Wendell and his team did an amazing job and I am so happy with how my home looks now. They were always on time and took care to clean up after themselves. The time and detail they put into the prep is evident in the final result. I highly recommend Perfection Painting to anyone looking to have quality painting done."</p>
           <div class="review-author">
-            <div class="review-avatar">RK</div>
+            <div class="review-avatar">AB</div>
             <div>
-              <div class="review-name">Customer Name</div>
-              <div class="review-location">Essex, MA</div>
+              <div class="review-name">Amber Baruffa</div>
+              <div class="review-location">East Boston, MA <span class="review-source">via Google</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Wendell was very professional, did a great job, worked long hours and even though he was painting the interior of my Doggie Daycare/Hotel which is open 7 days a week, 24 hours a day, his presence was never an intrusion. My clients have mentioned what a great job he did. He finished ahead of schedule and on budget."</p>
+          <div class="review-author">
+            <div class="review-avatar">LD</div>
+            <div>
+              <div class="review-name">Laura D.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 5 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Wendell is exceptionally professional and hardworking and we are pleased with the work he provided at our home."</p>
+          <div class="review-author">
+            <div class="review-avatar">AM</div>
+            <div>
+              <div class="review-name">Alison M.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 6 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"We researched several companies and were impressed by the confidence shown by Wendell. He is professional and beyond helpful. The bid was reasonable and very detailed. There was never any pressure from him. Wendell did a fabulous job — meticulous and carefully cleaned up at the end of each day. I love the way our house looks now! We highly recommend Perfection Painting."</p>
+          <div class="review-author">
+            <div class="review-avatar">LB</div>
+            <div>
+              <div class="review-name">Lourival B.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 7 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"They were always on time, cleaned up every day before leaving and finished the job on time. Wendell really lives up to his company's name — he is a perfectionist and very much an awesome professional, who goes above and beyond. A true home makeover!"</p>
+          <div class="review-author">
+            <div class="review-avatar">SC</div>
+            <div>
+              <div class="review-name">Sheila C.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 8 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"They did an excellent job, very professional, always on time and very detail-oriented. Their preparation is second to none. After they left, everything was nice and clean. They didn't leave any mess behind."</p>
+          <div class="review-author">
+            <div class="review-avatar">AC</div>
+            <div>
+              <div class="review-name">Alex C.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
             </div>
           </div>
         </div>
@@ -1418,6 +1606,21 @@ body {
 <!-- Toast -->
 <div class="toast" id="toast"></div>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
+  <div class="lightbox-content">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
 <script>
 /* ========================================
    PERFECTION PAINTING USA — SITE JS
@@ -1428,14 +1631,6 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
-
-// ---- MOBILE MENU ----
-const hamburger = document.getElementById('hamburgerBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const closeMenu = document.getElementById('closeMenu');
-hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
-function closeMobile() { mobileMenu.classList.remove('open'); }
 
 // ---- SCROLL REVEAL ----
 const reveals = document.querySelectorAll('.reveal');
@@ -1449,7 +1644,79 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+    const filter = btn.textContent.toLowerCase().trim();
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      if (filter === 'all' || item.dataset.category === filter) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
   });
+});
+
+// ---- LIGHTBOX ----
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCounter = document.getElementById('lightboxCounter');
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function getLightboxImages() {
+  return [...document.querySelectorAll('.portfolio-item:not(.hidden) img')];
+}
+
+function openLightbox(index) {
+  lightboxImages = getLightboxImages();
+  lightboxIndex = index;
+  lightboxImg.src = lightboxImages[lightboxIndex].src;
+  lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function showImage(dir) {
+  lightboxImages = getLightboxImages();
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  lightboxImg.src = lightboxImages[lightboxIndex].src;
+  lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+}
+
+document.querySelector('.portfolio-grid').addEventListener('click', (e) => {
+  const item = e.target.closest('.portfolio-item');
+  if (!item) return;
+  const visibleImages = getLightboxImages();
+  const img = item.querySelector('img');
+  const index = visibleImages.indexOf(img);
+  if (index !== -1) openLightbox(index);
+});
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', () => showImage(-1));
+document.getElementById('lightboxNext').addEventListener('click', () => showImage(1));
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target.classList.contains('lightbox-content')) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showImage(-1);
+  if (e.key === 'ArrowRight') showImage(1);
+});
+
+// Touch swipe support
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+lightbox.addEventListener('touchend', (e) => {
+  const diff = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(diff) > 50) showImage(diff > 0 ? -1 : 1);
 });
 
 // ---- TOAST ----
