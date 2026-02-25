@@ -483,6 +483,103 @@ body {
   letter-spacing: 1px;
 }
 
+/* ============ BEFORE & AFTER SLIDER ============ */
+.ba-slider-item {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
+}
+.ba-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ba-slider .ba-after,
+.ba-slider .ba-before {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ba-before-clip {
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+.ba-before-clip .ba-before {
+  width: 200%;
+  max-width: none;
+}
+.ba-handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.ba-handle-line {
+  flex: 1;
+  width: 3px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+.ba-handle-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--green-deep);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+.ba-label {
+  position: absolute;
+  bottom: 12px;
+  z-index: 3;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.ba-label-before { left: 12px; }
+.ba-label-after { right: 12px; }
+.ba-placeholder-msg {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: var(--green-whisper);
+  border: 2px dashed var(--green-pale);
+  border-radius: 10px;
+  color: var(--green-light);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+}
+.ba-slider-item:not(.has-images) .ba-slider { display: none; }
+.ba-slider-item:not(.has-images) .ba-placeholder-msg { display: flex; }
+
 /* ============ REVIEWS ============ */
 .reviews { background: var(--green-deep); color: var(--white); }
 .reviews .section-label { color: var(--green-light); }
@@ -1052,6 +1149,7 @@ body {
   .stat-number { font-size: 1.8rem; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+  .ba-slider-item { grid-column: span 1; }
   .portfolio-video { grid-column: span 1; }
 }
 
@@ -1209,6 +1307,8 @@ body {
         <button class="filter-btn">Exterior</button>
         <button class="filter-btn">Residential</button>
         <button class="filter-btn">Commercial</button>
+        <button class="filter-btn">Progress</button>
+        <button class="filter-btn">Before & After</button>
       </div>
     </div>
     <div class="portfolio-grid reveal">
@@ -1227,13 +1327,51 @@ body {
       <div class="portfolio-item" data-category="interior">
         <img src="images/Modern-New-England-interior-design-ideas-by-Liana-S.jpg" alt="Modern interior painting" loading="lazy">
       </div>
-      <div class="portfolio-item" data-category="residential">
+      <div class="portfolio-item" data-category="progress">
         <img src="images/Luxury-Interior-Design-Palm-Beach-Bedroom-Progress.jpg" alt="Painting work in progress" loading="lazy">
+      </div>
+      <!-- Before & After Sliders -->
+      <div class="portfolio-item ba-slider-item" data-category="before-after">
+        <div class="ba-slider">
+          <img class="ba-after" src="images/staircase-after.jpg" alt="Staircase painting - After" loading="lazy">
+          <div class="ba-before-clip">
+            <img class="ba-before" src="images/staircase-before.jpg" alt="Staircase painting - Before" loading="lazy">
+          </div>
+          <div class="ba-handle">
+            <div class="ba-handle-line"></div>
+            <div class="ba-handle-circle">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="9 6 15 12 9 18"/></svg>
+            </div>
+            <div class="ba-handle-line"></div>
+          </div>
+          <span class="ba-label ba-label-before">Before</span>
+          <span class="ba-label ba-label-after">After</span>
+        </div>
+        <div class="ba-placeholder-msg">Add Before &amp; After images</div>
+      </div>
+      <div class="portfolio-item ba-slider-item" data-category="before-after">
+        <div class="ba-slider">
+          <img class="ba-after" src="" alt="After" loading="lazy">
+          <div class="ba-before-clip">
+            <img class="ba-before" src="" alt="Before" loading="lazy">
+          </div>
+          <div class="ba-handle">
+            <div class="ba-handle-line"></div>
+            <div class="ba-handle-circle">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="9 6 15 12 9 18"/></svg>
+            </div>
+            <div class="ba-handle-line"></div>
+          </div>
+          <span class="ba-label ba-label-before">Before</span>
+          <span class="ba-label ba-label-after">After</span>
+        </div>
+        <div class="ba-placeholder-msg">Add Before &amp; After images</div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- ======== REVIEWS ======== -->
 <section class="section reviews" id="reviews">
   <div class="section-inner">
@@ -1650,7 +1788,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filter = btn.textContent.toLowerCase().trim();
+    const filterText = btn.textContent.toLowerCase().trim();
+    const filter = filterText === 'before & after' ? 'before-after' : filterText;
     document.querySelectorAll('.portfolio-item').forEach(item => {
       if (filter === 'all' || item.dataset.category === filter) {
         item.classList.remove('hidden');
@@ -1661,6 +1800,49 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
+// ---- BEFORE & AFTER SLIDERS ----
+document.querySelectorAll('.ba-slider').forEach(slider => {
+  // Check if images have src
+  const afterImg = slider.querySelector('.ba-after');
+  const beforeImg = slider.querySelector('.ba-before');
+  if (afterImg.src && afterImg.getAttribute('src') !== '') {
+    slider.closest('.ba-slider-item').classList.add('has-images');
+  }
+
+  let isDragging = false;
+
+  function updatePosition(x) {
+    const rect = slider.getBoundingClientRect();
+    let pos = (x - rect.left) / rect.width;
+    pos = Math.max(0.02, Math.min(0.98, pos));
+    const pct = pos * 100;
+    slider.querySelector('.ba-before-clip').style.width = pct + '%';
+    slider.querySelector('.ba-handle').style.left = pct + '%';
+  }
+
+  slider.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    updatePosition(e.clientX);
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', (e) => {
+    if (isDragging) updatePosition(e.clientX);
+  });
+  document.addEventListener('mouseup', () => { isDragging = false; });
+
+  slider.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    updatePosition(e.touches[0].clientX);
+  }, { passive: true });
+  slider.addEventListener('touchmove', (e) => {
+    if (isDragging) {
+      updatePosition(e.touches[0].clientX);
+      e.preventDefault();
+    }
+  }, { passive: false });
+  slider.addEventListener('touchend', () => { isDragging = false; });
+});
+
 // ---- LIGHTBOX ----
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
@@ -1669,7 +1851,7 @@ let lightboxImages = [];
 let lightboxIndex = 0;
 
 function getLightboxImages() {
-  return [...document.querySelectorAll('.portfolio-item:not(.hidden) img')];
+  return [...document.querySelectorAll('.portfolio-item:not(.hidden):not(.ba-slider-item) > img')];
 }
 
 function openLightbox(index) {
@@ -1695,7 +1877,7 @@ function showImage(dir) {
 
 document.querySelector('.portfolio-grid').addEventListener('click', (e) => {
   const item = e.target.closest('.portfolio-item');
-  if (!item) return;
+  if (!item || item.classList.contains('ba-slider-item')) return;
   const visibleImages = getLightboxImages();
   const img = item.querySelector('img');
   const index = visibleImages.indexOf(img);
