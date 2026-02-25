@@ -486,36 +486,30 @@ body {
 /* ============ BEFORE & AFTER SLIDER ============ */
 .ba-slider-item {
   grid-column: span 2;
-  aspect-ratio: 16/9;
+  aspect-ratio: unset;
 }
 .ba-slider {
   position: relative;
   width: 100%;
-  height: 100%;
   overflow: hidden;
   cursor: ew-resize;
   user-select: none;
   -webkit-user-select: none;
+  border-radius: 10px;
 }
-.ba-slider .ba-after,
+.ba-slider .ba-after {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .ba-slider .ba-before {
   position: absolute;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.ba-before-clip {
-  position: absolute;
-  top: 0; left: 0;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
   z-index: 2;
-}
-.ba-before-clip .ba-before {
-  width: 200%;
-  max-width: none;
 }
 .ba-handle {
   position: absolute;
@@ -576,6 +570,7 @@ body {
   letter-spacing: 1.5px;
   align-items: center;
   justify-content: center;
+  min-height: 200px;
 }
 .ba-slider-item:not(.has-images) .ba-slider { display: none; }
 .ba-slider-item:not(.has-images) .ba-placeholder-msg { display: flex; }
@@ -1334,9 +1329,7 @@ body {
       <div class="portfolio-item ba-slider-item" data-category="before-after">
         <div class="ba-slider">
           <img class="ba-after" src="images/staircase-after.jpg" alt="Staircase painting - After" loading="lazy">
-          <div class="ba-before-clip">
-            <img class="ba-before" src="images/staircase-before.jpg" alt="Staircase painting - Before" loading="lazy">
-          </div>
+          <img class="ba-before" src="images/staircase-before.jpg" alt="Staircase painting - Before" loading="lazy">
           <div class="ba-handle">
             <div class="ba-handle-line"></div>
             <div class="ba-handle-circle">
@@ -1353,9 +1346,7 @@ body {
       <div class="portfolio-item ba-slider-item" data-category="before-after">
         <div class="ba-slider">
           <img class="ba-after" src="" alt="After" loading="lazy">
-          <div class="ba-before-clip">
-            <img class="ba-before" src="" alt="Before" loading="lazy">
-          </div>
+          <img class="ba-before" src="" alt="Before" loading="lazy">
           <div class="ba-handle">
             <div class="ba-handle-line"></div>
             <div class="ba-handle-circle">
@@ -1802,10 +1793,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 // ---- BEFORE & AFTER SLIDERS ----
 document.querySelectorAll('.ba-slider').forEach(slider => {
-  // Check if images have src
   const afterImg = slider.querySelector('.ba-after');
   const beforeImg = slider.querySelector('.ba-before');
-  if (afterImg.src && afterImg.getAttribute('src') !== '') {
+  if (afterImg.getAttribute('src') && afterImg.getAttribute('src') !== '') {
     slider.closest('.ba-slider-item').classList.add('has-images');
   }
 
@@ -1816,7 +1806,7 @@ document.querySelectorAll('.ba-slider').forEach(slider => {
     let pos = (x - rect.left) / rect.width;
     pos = Math.max(0.02, Math.min(0.98, pos));
     const pct = pos * 100;
-    slider.querySelector('.ba-before-clip').style.width = pct + '%';
+    beforeImg.style.clipPath = 'polygon(0 0, ' + pct + '% 0, ' + pct + '% 100%, 0 100%)';
     slider.querySelector('.ba-handle').style.left = pct + '%';
   }
 
