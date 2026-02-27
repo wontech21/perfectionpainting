@@ -490,7 +490,7 @@ body {
 .ba-slider-row {
   grid-column: span 3;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 .ba-slider-item {
@@ -1311,8 +1311,6 @@ body {
         <button class="filter-btn active">All</button>
         <button class="filter-btn">Interior</button>
         <button class="filter-btn">Exterior</button>
-        <button class="filter-btn">Residential</button>
-        <button class="filter-btn">Commercial</button>
         <button class="filter-btn">Progress</button>
         <button class="filter-btn">Before & After</button>
       </div>
@@ -1335,6 +1333,30 @@ body {
       </div>
       <div class="portfolio-item" data-category="progress">
         <img src="images/Luxury-Interior-Design-Palm-Beach-Bedroom-Progress.jpg" alt="Painting work in progress" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/IMG_4147.jpg" alt="Interior painting project" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/IMG_3221.jpg" alt="Interior painting project" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/IMG_3540.jpg" alt="Exterior painting project" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/IMG_3505.jpg" alt="Exterior painting project" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/IMG_3503.jpg" alt="Exterior painting project" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="progress">
+        <img src="images/IMG_3442.jpg" alt="Painting work in progress" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="progress">
+        <img src="images/IMG_3250.jpg" alt="Painting work in progress" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="progress">
+        <img src="images/IMG_3535.jpg" alt="Painting work in progress" loading="lazy">
       </div>
       <!-- Before & After Sliders -->
       <div class="ba-slider-row" data-category="before-after">
@@ -1359,6 +1381,23 @@ body {
         <div class="ba-slider">
           <img class="ba-after" src="images/deck-after.jpg" alt="Deck staining - After" loading="lazy">
           <img class="ba-before" src="images/deck-before.jpg" alt="Deck staining - Before" loading="lazy">
+          <div class="ba-handle">
+            <div class="ba-handle-line"></div>
+            <div class="ba-handle-circle">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5"><polyline points="9 6 15 12 9 18"/></svg>
+            </div>
+            <div class="ba-handle-line"></div>
+          </div>
+          <span class="ba-label ba-label-before">Before</span>
+          <span class="ba-label ba-label-after">After</span>
+        </div>
+        <div class="ba-placeholder-msg">Add Before &amp; After images</div>
+      </div>
+      <div class="portfolio-item ba-slider-item" data-category="before-after">
+        <div class="ba-slider">
+          <img class="ba-after" src="images/IMG_3908.jpg" alt="Exterior siding - After" loading="lazy">
+          <img class="ba-before" src="images/IMG_3476.jpg" alt="Exterior siding - Before" loading="lazy">
           <div class="ba-handle">
             <div class="ba-handle-line"></div>
             <div class="ba-handle-circle">
