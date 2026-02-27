@@ -418,6 +418,9 @@ body {
 .portfolio-item.hidden {
   display: none;
 }
+.ba-slider-row.hidden {
+  display: none;
+}
 .portfolio-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
 
 /* ============ LIGHTBOX ============ */
@@ -484,11 +487,14 @@ body {
 }
 
 /* ============ BEFORE & AFTER SLIDER ============ */
+.ba-slider-row {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
 .ba-slider-item {
-  grid-column: span 2;
   aspect-ratio: unset;
-  max-width: 65%;
-  justify-self: center;
 }
 .ba-slider {
   position: relative;
@@ -1074,6 +1080,7 @@ body {
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-item:nth-child(1) { grid-column: span 2; }
   .portfolio-video { grid-column: span 2; }
+  .ba-slider-row { grid-column: span 2; }
   .reviews-track { grid-template-columns: 1fr 1fr; }
   .review-card:nth-child(3) { display: block; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -1105,6 +1112,7 @@ body {
   .portfolio-grid { grid-template-columns: 1fr 1fr; }
   .portfolio-item:nth-child(1) { grid-column: span 2; }
   .portfolio-video { grid-column: span 2; aspect-ratio: 16/9; }
+  .ba-slider-row { grid-column: span 2; }
 
   .reviews-track { grid-template-columns: 1fr; }
 
@@ -1146,7 +1154,8 @@ body {
   .stat-number { font-size: 1.8rem; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .portfolio-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
-  .ba-slider-item { grid-column: span 1; max-width: 100%; }
+  .ba-slider-item { max-width: 100%; }
+  .ba-slider-row { grid-column: span 1; grid-template-columns: 1fr; }
   .portfolio-video { grid-column: span 1; }
 }
 
@@ -1328,6 +1337,7 @@ body {
         <img src="images/Luxury-Interior-Design-Palm-Beach-Bedroom-Progress.jpg" alt="Painting work in progress" loading="lazy">
       </div>
       <!-- Before & After Sliders -->
+      <div class="ba-slider-row" data-category="before-after">
       <div class="portfolio-item ba-slider-item" data-category="before-after">
         <div class="ba-slider">
           <img class="ba-after" src="images/staircase-after.jpg" alt="Staircase painting - After" loading="lazy">
@@ -1361,6 +1371,7 @@ body {
           <span class="ba-label ba-label-after">After</span>
         </div>
         <div class="ba-placeholder-msg">Add Before &amp; After images</div>
+      </div>
       </div>
     </div>
   </div>
@@ -1680,7 +1691,7 @@ body {
                 </div>
                 <div class="contact-info-item">
                   <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
+                  <a href="/cdn-cgi/l/email-protection#32425740545751465b5d5c42535b5c465b5c5547415372555f535b5e1c515d5f"><span class="__cf_email__" data-cfemail="43332631252620372a2c2d33222a2d372a2d2436302203242e222a2f6d202c2e">[email&#160;protected]</span></a>
                 </div>
                 <div class="contact-info-item">
                   <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1743,7 +1754,7 @@ body {
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#1f6f7a6d797a7c6b7670716f7e76716b7671786a6c7e5f78727e7673317c7072"><span class="__cf_email__" data-cfemail="cbbbaeb9adaea8bfa2a4a5bbaaa2a5bfa2a5acbeb8aa8baca6aaa2a7e5a8a4a6">[email&#160;protected]</span></a>
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1776,7 +1787,7 @@ body {
   <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ========================================
    PERFECTION PAINTING USA — SITE JS
    ======================================== */
@@ -1807,6 +1818,11 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       } else {
         item.classList.add('hidden');
       }
+    });
+    // Show/hide the slider row wrapper based on its children
+    document.querySelectorAll('.ba-slider-row').forEach(row => {
+      const hasVisible = [...row.querySelectorAll('.portfolio-item')].some(item => !item.classList.contains('hidden'));
+      row.classList.toggle('hidden', !hasVisible);
     });
   });
 });
@@ -1967,16 +1983,18 @@ document.getElementById('estimateForm').addEventListener('submit', function(e) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
-  }).then(r => {
-    if (r.ok) showSuccess();
-    else showToast('Something went wrong. Please call us at (617) 459-7218.');
-  }).catch(() => showToast('Something went wrong. Please call us at (617) 459-7218.'));
-  
-  function showSuccess() {
-    form.style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-    showToast('Estimate request sent!');
-  }
+  })
+  .then(response => {
+    if (response.ok) {
+      showToast('Thanks! We\'ll be in touch soon.');
+      form.reset();
+    } else {
+      showToast('Something went wrong. Please try again.');
+    }
+  })
+  .catch(() => {
+    showToast('Something went wrong. Please try again.');
+  });
 });
 </script>
 </body>
