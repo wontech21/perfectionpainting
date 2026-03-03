@@ -722,14 +722,8 @@ body {
 }
 .about-photo {
   aspect-ratio: 4/5;
-  background: var(--green-whisper);
   border-radius: 10px;
-  border: 2px dashed var(--green-pale);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--green-light);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  overflow: hidden;
 }
 .about-content h2 {
   font-family: 'Cormorant Garamond', serif;
@@ -1535,6 +1529,24 @@ body {
             </div>
           </div>
         </div>
+        <!-- Review - Nancy Malin -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Wendell led the team of painters we hired just over a year ago to paint the interior of our condo. From first day to last, everything was handled in a very professional fashion and the job that was done is great. The team arrived and left as promised, everyone was very pleasant and accommodating and everything was cleaned up each evening. They were a true pleasure to work with. I would highly recommend them to anyone and everyone."</p>
+          <div class="review-author">
+            <div class="review-avatar">NM</div>
+            <div>
+              <div class="review-name">Nancy Malin</div>
+              <div class="review-location"><span class="review-source">via Google</span></div>
+            </div>
+          </div>
+        </div>
         <!-- Review 6 - Laura D. -->
         <div class="review-card">
           <div class="review-stars">
@@ -1634,8 +1646,7 @@ body {
 <section class="section about" id="about">
   <div class="section-inner">
     <div class="about-grid">
-      <div class="about-photo reveal">
-        Photo of Wendell / Team
+      <div class="about-photo reveal" style="background: url('images/IMG_1681.jpg') center center / cover no-repeat;">
       </div>
       <div class="about-content reveal">
         <div class="section-label">About Us</div>
