@@ -378,6 +378,49 @@ body {
   font-weight: 300;
 }
 
+/* ============ PROCESS / STANDARD ============ */
+.process-section { margin-top: 1rem; }
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.process-card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2.2rem;
+  border: 1px solid rgba(27,58,45,0.06);
+  transition: var(--transition);
+  position: relative;
+}
+.process-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.process-icon {
+  width: 48px; height: 48px;
+  background: var(--green-whisper);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem;
+}
+.process-icon svg { width: 24px; height: 24px; stroke: var(--green-primary); }
+.process-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--green-deep);
+}
+.process-card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.process-card p strong {
+  color: var(--text-mid);
+  font-weight: 500;
+}
+
 /* ============ PORTFOLIO ============ */
 .portfolio { background: var(--white); }
 .portfolio-header {
@@ -1193,6 +1236,7 @@ body {
   .section { padding: 4.5rem 1.5rem; }
 
   .services-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
 
   .portfolio-grid { grid-template-columns: 1fr 1fr; }
   .portfolio-item:not(.ba-slider-item):nth-child(1) { grid-column: span 2; }
@@ -1255,6 +1299,7 @@ body {
   <a href="#" class="nav-logo">Perfection Painting<span>.</span></a>
   <ul class="nav-links">
     <li class="nav-section-link"><a href="#services">Services</a></li>
+    <li class="nav-section-link"><a href="#standard">Our Standard</a></li>
     <li class="nav-section-link"><a href="#portfolio">Our Work</a></li>
     <li class="nav-section-link"><a href="#reviews">Reviews</a></li>
     <li class="nav-section-link"><a href="#about">About</a></li>
@@ -1272,6 +1317,7 @@ body {
 <!-- Mobile dropdown menu -->
 <div class="mobile-dropdown" id="mobileDropdown">
   <a href="#services">Services</a>
+  <a href="#standard">Our Standard</a>
   <a href="#portfolio">Our Work</a>
   <a href="#reviews">Reviews</a>
   <a href="#about">About</a>
@@ -1382,10 +1428,42 @@ body {
         <p>Transform your kitchen or bathroom with professionally refinished cabinets. A fraction of the cost of replacement with stunning results.</p>
       </div>
     </div>
+
+    <!-- The Perfection Standard -->
+    <div class="process-section reveal" id="standard">
+      <div class="section-label" style="margin-top: 4rem;">The Perfection Standard</div>
+      <h2 class="section-title">How We Work</h2>
+      <p class="section-desc">Every project follows the same disciplined approach — because cutting corners is never an option.</p>
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>Our Commitment</h3>
+          <p>We pledge to provide the best painting experience possible — friendly, courteous, and communicative from start to finish. You'll be part of the process every step of the way, and we treat your property with the same respect we'd give our own home.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Meticulous Preparation</h3>
+          <p><strong>Washing:</strong> Remove all dirt, mold, and mildew so the finish coat adheres properly.<br>
+<strong>Caulking:</strong> Seal out moisture by filling every gap, crack, corner, and butt joint.<br>
+<strong>Scraping:</strong> Ensure a firm base by removing all visible loose and peeling paint.<br>
+<strong>Sanding:</strong> Degloss where necessary to promote adhesion of the top coat.<br>
+<strong>Priming:</strong> Seal the surface so the finish coat bites for the best possible adhesion.</p>
+        </div>
+        <div class="process-card">
+          <div class="process-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3>Clean &amp; Professional</h3>
+          <p>Full clean-up is completed daily and at job completion — ladders down, tools stacked, equipment stored properly. We cover and protect your plants, shrubs, and landscaping throughout the project, and leave all leftover paint for your future use.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-
-<!-- ======== PORTFOLIO ======== -->
 <section class="section portfolio" id="portfolio">
   <div class="section-inner">
     <div class="portfolio-header reveal">
