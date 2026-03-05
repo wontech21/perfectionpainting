@@ -1424,6 +1424,33 @@ body {
 
   .services-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
+
+  /* Override flip cards on mobile — use fade overlay instead */
+  .service-card { perspective: none; }
+  .service-card-inner {
+    transform-style: flat;
+    transition: none;
+  }
+  .service-card.flipped .service-card-inner {
+    transform: none;
+  }
+  .service-front, .service-back {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+  }
+  .service-back {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+  }
+  .service-card.flipped .service-back {
+    opacity: 1;
+  }
+  .service-card.flipped .service-front .tap-hint,
+  .service-card.flipped .service-front h3 {
+    opacity: 0;
+  }
   .leave-review-row { grid-template-columns: 1fr; }
   .brand-logos { gap: 2rem; }
   .brand-logo { height: 45px; }
