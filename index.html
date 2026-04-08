@@ -2399,7 +2399,7 @@ body {
                 </div>
                 <div class="contact-info-item">
                   <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  <a href="/cdn-cgi/l/email-protection#9eeefbecf8fbfdeaf7f1f0eefff7f0eaf7f0f9ebedffdef9f3fff7f2b0fdf1f3"><span class="__cf_email__" data-cfemail="22524750444741564b4d4c52434b4c564b4c4557514362454f434b4e0c414d4f">[email&#160;protected]</span></a>
+                  <a id="emailLink1"></a>
                 </div>
                 <div class="contact-info-item">
                   <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -2462,7 +2462,7 @@ body {
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="/cdn-cgi/l/email-protection#6c1c091e0a090f180503021c0d05021805020b191f0d2c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="13637661757670677a7c7d63727a7d677a7d7466607253747e727a7f3d707c7e">[email&#160;protected]</span></a>
+          <a id="emailLink2"></a>
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -2495,7 +2495,7 @@ body {
   <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ========================================
    PERFECTION PAINTING USA — SITE JS
    ======================================== */
@@ -2764,6 +2764,16 @@ document.getElementById('submitReviewBtn').addEventListener('click', function() 
 
   For now, the form shows a success message locally as a demo.
 */
+
+// Build email links (avoids Cloudflare HTML obfuscation)
+(function(){
+  var u='perfectionpaintingusa',d='gmail.com',full=u+String.fromCharCode(64)+d;
+  var link1=document.getElementById('emailLink1');
+  var link2=document.getElementById('emailLink2');
+  if(link1){link1.href='mail'+'to:'+full;link1.textContent=full;}
+  if(link2){link2.href='mail'+'to:'+full;link2.textContent=full;}
+})();
+
 document.getElementById('estimateForm').addEventListener('submit', function(e) {
   e.preventDefault();
   
