@@ -65,4 +65,4 @@ User-agent: Diffbot
 Allow: /
 
 # Sitemap
-Sitemap: https://perfectionpainting.netlify.app/sitemap.xml
+Sitemap: https://perfectionpaintingusa.com/sitemap.xml
