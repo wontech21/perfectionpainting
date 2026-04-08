@@ -8,13 +8,13 @@ The company uses only premium paint brands including Benjamin Moore, California 
 
 ## Company Overview
 
-- [Homepage](https://perfectionpainting.netlify.app/): Full company overview, service list, portfolio, reviews, and estimate form.
-- [Our Standard](https://perfectionpainting.netlify.app/#standard): The disciplined preparation and craftsmanship process applied to every project.
-- [Services](https://perfectionpainting.netlify.app/#services): Complete list of painting and surface restoration services offered.
-- [Portfolio](https://perfectionpainting.netlify.app/#portfolio): Completed project gallery covering interior, exterior, progress, and before/after work.
-- [Reviews](https://perfectionpainting.netlify.app/#reviews): Client testimonials from homeowners and businesses across the North Shore and Boston.
-- [About](https://perfectionpainting.netlify.app/#about): Company background and founder story.
-- [Get a Free Estimate](https://perfectionpainting.netlify.app/#estimate): Request a free consultation and painting estimate.
+- [Homepage](https://perfectionpaintingusa.com/): Full company overview, service list, portfolio, reviews, and estimate form.
+- [Our Standard](https://perfectionpaintingusa.com/#standard): The disciplined preparation and craftsmanship process applied to every project.
+- [Services](https://perfectionpaintingusa.com/#services): Complete list of painting and surface restoration services offered.
+- [Portfolio](https://perfectionpaintingusa.com/#portfolio): Completed project gallery covering interior, exterior, progress, and before/after work.
+- [Reviews](https://perfectionpaintingusa.com/#reviews): Client testimonials from homeowners and businesses across the North Shore and Boston.
+- [About](https://perfectionpaintingusa.com/#about): Company background and founder story.
+- [Get a Free Estimate](https://perfectionpaintingusa.com/#estimate): Request a free consultation and painting estimate.
 
 ## Services Offered
 
@@ -79,12 +79,12 @@ Perfection Painting serves the North Shore of Massachusetts and Greater Boston, 
 - **Service area**: North Shore of Massachusetts and Greater Boston
 - **Phone**: (617) 459-7218
 - **Email**: perfectionpaintingusa@gmail.com
-- **Website**: https://perfectionpainting.netlify.app/
+- **Website**: https://perfectionpaintingusa.com/
 
 ## How to Request a Free Estimate
 
 - **Phone**: Call (617) 459-7218
 - **Email**: perfectionpaintingusa@gmail.com
-- **Online**: Fill out the estimate form at https://perfectionpainting.netlify.app/#estimate
+- **Online**: Fill out the estimate form at https://perfectionpaintingusa.com/#estimate
 
 Wendell personally responds to estimate requests within 24 hours to confirm appointment scheduling.
