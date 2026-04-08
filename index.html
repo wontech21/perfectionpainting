@@ -2406,7 +2406,7 @@ body {
                 </div>
                 <div class="contact-info-item">
                   <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  <a href="/cdn-cgi/l/email-protection#8cfce9feeae9eff8e5e3e2fcede5e2f8e5e2ebf9ffedccebe1ede5e0a2efe3e1"><span class="__cf_email__" data-cfemail="94e4f1e6f2f1f7e0fdfbfae4f5fdfae0fdfaf3e1e7f5d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</span></a>
+                  <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
                 </div>
                 <div class="contact-info-item">
                   <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -2469,7 +2469,7 @@ body {
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="/cdn-cgi/l/email-protection#5c2c392e3a393f283533322c3d35322835323b292f3d1c3b313d3530723f3331"><span class="__cf_email__" data-cfemail="46362334202325322f292836272f28322f282133352706212b272f2a6825292b">[email&#160;protected]</span></a>
+          <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
         </div>
         <div class="footer-contact-item">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -2502,7 +2502,7 @@ body {
   <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ========================================
    PERFECTION PAINTING USA — SITE JS
    ======================================== */
@@ -2786,23 +2786,24 @@ document.getElementById('estimateForm').addEventListener('submit', function(e) {
   // Add local submission time in EST
   data.submitted_at = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'full', timeStyle: 'short' });
   
- fetch('https://formspree.io/f/xwvnnara', {
+  fetch('https://formspree.io/f/xwvnnara', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
+    headers: { 'Accept': 'application/json' },
+    body: formData
   })
   .then(response => {
     if (response.ok) {
-      showToast('Thanks! We\'ll be in touch soon.');
-      form.reset();
+      document.getElementById('estimateForm').style.display = 'none';
+      document.getElementById('estimateSuccess').style.display = 'block';
     } else {
-      showToast('Something went wrong. Please try again.');
+      alert('There was a problem submitting your request. Please call (617) 459-7218 or email perfectionpaintingusa@gmail.com directly.');
     }
   })
-  .catch(() => {
-    showToast('Something went wrong. Please try again.');
+  .catch(error => {
+    alert('There was a problem submitting your request. Please call (617) 459-7218 or email perfectionpaintingusa@gmail.com directly.');
   });
 });
 </script>
+
 </body>
 </html>
