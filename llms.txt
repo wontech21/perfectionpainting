@@ -1,6 +1,6 @@
 # Perfection Painting Co.
 
-> Perfection Painting is a premium residential and commercial painting company serving the North Shore of Massachusetts and Greater Boston. Founded by Wendell Nunes with nearly 20 years of experience, the company is fully licensed and insured and is known for meticulous preparation, premium paint brands, and an uncompromising standard of craftsmanship. The company name is also its standard: quality becomes perfection.
+> Perfection Painting is a premium residential and commercial painting company serving the North Shore of Massachusetts and Greater Boston. Founded by Wendell Nunes, whose 30 years of hands-on painting experience underpins every project, the company is fully licensed and insured and is known for meticulous preparation, premium paint brands, and an uncompromising standard of craftsmanship. The company name is also its standard: quality becomes perfection.
 
 Perfection Painting was founded on a simple belief: every surface deserves to be treated with care, skill, and respect. Projects range from single-room interior refreshes to full exterior repaints, commercial storefronts, cabinet refinishing, plaster restoration, and weathered deck revival. Every job follows the same disciplined preparation process — wash, caulk, scrape, sand, prime — because cutting corners is never an option.
 
@@ -73,6 +73,7 @@ Perfection Painting serves the North Shore of Massachusetts and Greater Boston, 
 
 - **Company name**: Perfection Painting Co.
 - **Founder**: Wendell Nunes
+- **Years of painting experience**: 30 (Wendell began his painting career before founding the company)
 - **Years in business**: Nearly 20 years
 - **License and insurance**: Fully licensed and insured
 - **Rating**: 5.0 stars on Google and Angi
