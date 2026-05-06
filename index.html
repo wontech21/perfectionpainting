@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfection Painting | Premium Painting Services</title>
+<meta name="description" content="Perfection Painting — Interior, Exterior, Commercial & Residential painting services on the North Shore and Boston. Quality craftsmanship by Wendell Nunes. Get a free estimate today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green-deep: #1b3a2d;
+  --green-primary: #2d5a3d;
+  --green-mid: #3d7a52;
+  --green-light: #8fae8b;
+  --green-pale: #dce8da;
+  --green-whisper: #f0f5ef;
+  --cream: #fafaf7;
+  --white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-light: #7a7a7a;
+  --gold-accent: #b8963e;
+  --shadow-sm: 0 2px 8px rgba(27,58,45,0.06);
+  --shadow-md: 0 8px 30px rgba(27,58,45,0.1);
+  --shadow-lg: 0 20px 60px rgba(27,58,45,0.12);
+  --radius: 6px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============ NAVIGATION ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1.2rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: var(--transition);
+  background: transparent;
+}
+.nav.scrolled {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  padding: 0.8rem 3rem;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.nav.scrolled .nav-logo { color: var(--green-deep); }
+.nav-logo span { color: var(--green-light); }
+.nav.scrolled .nav-logo span { color: var(--green-primary); }
+
+.nav-links { display: flex; align-items: center; gap: 0; list-style: none; flex: 1; justify-content: space-evenly; margin: 0 2rem; }
+.nav-links li { text-align: center; }
+.nav-links a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.95rem; font-weight: 400;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+  position: relative;
+  padding: 0.5rem 0.6rem;
+  display: block;
+  white-space: nowrap;
+}
+.nav.scrolled .nav-links a { color: var(--text-mid); }
+.nav-links a:hover { color: var(--white); }
+.nav.scrolled .nav-links a:hover { color: var(--green-primary); }
+
+.nav-cta {
+  background: var(--green-primary) !important;
+  color: var(--white) !important;
+  padding: 0.55rem 1.3rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: var(--transition);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--green-mid) !important; transform: translateY(-1px); }
+
+.nav-phone {
+  display: flex; align-items: center; gap: 0.4rem;
+  color: rgba(255,255,255,0.9) !important;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.nav.scrolled .nav-phone { color: var(--green-deep) !important; }
+
+/* Mobile menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--white);
+  transition: var(--transition);
+}
+.nav.scrolled .hamburger span { background: var(--green-deep); }
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--green-deep);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(135deg, rgba(27,58,45,0.92) 0%, rgba(45,90,61,0.85) 50%, rgba(61,122,82,0.78) 100%);
+  z-index: 1;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(143,174,139,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(184,150,62,0.08) 0%, transparent 50%);
+}
+/* Subtle texture overlay */
+.hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Photo placeholder behind the overlay */
+.hero-photo-placeholder {
+  position: absolute; inset: 0; z-index: 0;
+  background: var(--green-deep);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-photo-placeholder-text {
+  color: rgba(255,255,255,0.15);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 2px dashed rgba(255,255,255,0.1);
+  padding: 3rem 4rem;
+  border-radius: var(--radius);
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 2rem;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  color: var(--green-light);
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(4px);
+  animation: fadeInUp 0.8s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--green-light);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+  animation: fadeInUp 0.8s ease 0.15s both;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--green-light);
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+  line-height: 1.7;
+  animation: fadeInUp 0.8s ease 0.3s both;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.hero-divider {
+  color: var(--green-light);
+  opacity: 0.6;
+}
+
+.hero-actions {
+  display: flex; align-items: center; justify-content: center; gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.45s both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.3px;
+}
+.btn-primary {
+  background: var(--white);
+  color: var(--green-deep);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.05); }
+.btn-green {
+  background: var(--green-primary);
+  color: var(--white);
+}
+.btn-green:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.hero-scroll {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+.hero-scroll svg { width: 24px; height: 24px; stroke: rgba(255,255,255,0.4); }
+
+/* ============ SECTION COMMON ============ */
+.section {
+  padding: 7rem 2rem;
+}
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.75rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green-primary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.section-label::before {
+  content: '';
+  width: 28px; height: 1.5px;
+  background: var(--green-primary);
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--green-deep);
+}
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  max-width: 600px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ============ SERVICES ============ */
+.services { background: var(--cream); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+.service-card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2.2rem;
+  transition: var(--transition);
+  border: 1px solid rgba(27,58,45,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green-primary), var(--green-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+.service-icon {
+  width: 48px; height: 48px;
+  background: var(--green-whisper);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem;
+}
+.service-icon svg { width: 24px; height: 24px; stroke: var(--green-primary); fill: none; stroke-width: 1.5; }
+
+.service-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--green-deep);
+}
+.service-card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ============ PORTFOLIO ============ */
+.portfolio { background: var(--white); }
+.portfolio-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.portfolio-filters {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  border: 1.5px solid var(--green-pale);
+  background: transparent;
+  color: var(--text-mid);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--green-primary);
+  color: var(--white);
+  border-color: var(--green-primary);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.portfolio-item {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+.portfolio-item.hidden {
+  display: none;
+}
+.portfolio-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+/* ============ LIGHTBOX ============ */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.lightbox.active { display: flex; }
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transition: opacity 0.3s ease;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  background: none; border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10001;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: #fff; }
+.lightbox-nav {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  width: 52px; height: 52px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10001;
+}
+.lightbox-nav:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+.lightbox-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* ============ REVIEWS ============ */
+.reviews { background: var(--green-deep); color: var(--white); }
+.reviews .section-label { color: var(--green-light); }
+.reviews .section-label::before { background: var(--green-light); }
+.reviews .section-title { color: var(--white); }
+.reviews .section-desc { color: rgba(255,255,255,0.5); }
+
+.reviews-container {
+  margin-top: 3.5rem;
+  position: relative;
+}
+.reviews-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.review-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+  transition: var(--transition);
+}
+.review-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+
+.review-stars {
+  display: flex; gap: 3px;
+  margin-bottom: 1.2rem;
+}
+.review-stars svg { width: 16px; height: 16px; fill: var(--gold-accent); }
+
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.review-author {
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.review-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green-light);
+}
+.review-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.review-location {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.review-source {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: rgba(255,255,255,0.5);
+}
+
+.google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50px;
+  padding: 0.55rem 1.3rem 0.55rem 1rem;
+  text-decoration: none;
+  transition: var(--transition);
+  backdrop-filter: blur(4px);
+}
+.google-badge:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-1px);
+}
+.google-icon { flex-shrink: 0; }
+.angi-icon { flex-shrink: 0; border-radius: 4px; }
+.google-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.google-badge-stars {
+  color: #FBBC05;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.google-badge-label {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.google-badge-arrow {
+  color: rgba(255,255,255,0.4);
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+.google-badge:hover .google-badge-arrow { color: rgba(255,255,255,0.8); }
+.review-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+/* ============ ABOUT ============ */
+.about { background: var(--cream); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+.about-photo {
+  aspect-ratio: 4/5;
+  background: var(--green-whisper);
+  border-radius: 10px;
+  border: 2px dashed var(--green-pale);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green-light);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.about-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  color: var(--green-deep);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.about-content p {
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+  font-size: 0.95rem;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--green-pale);
+}
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--green-primary);
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+/* ============ ESTIMATE / BOOKING ============ */
+.estimate { background: var(--white); }
+.estimate-layout {
+  margin-top: 3.5rem;
+}
+.estimate-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+.estimate-bottom {
+  margin-top: 1.5rem;
+}
+.estimate-bottom .form-submit {
+  width: 100%;
+}
+.checkbox-group--single {
+  grid-template-columns: 1fr;
+}
+
+.form-group { margin-bottom: 1.2rem; }
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.3px;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid var(--green-pale);
+  border-radius: var(--radius);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  background: var(--white);
+  transition: var(--transition);
+  outline: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--green-primary);
+  box-shadow: 0 0 0 3px rgba(45,90,61,0.08);
+}
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border: 1.5px solid var(--green-pale);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  background: var(--white);
+  user-select: none;
+}
+.checkbox-item:hover { border-color: var(--green-mid); background: var(--green-whisper); }
+.checkbox-item input[type="checkbox"] { display: none; }
+.checkmark {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--green-pale);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.checkmark::after {
+  content: '';
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  background: var(--green-primary);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+.checkbox-item input[type="checkbox"]:checked ~ .checkmark {
+  border-color: var(--green-primary);
+}
+.checkbox-item input[type="checkbox"]:checked ~ .checkmark::after {
+  transform: scale(1);
+}
+.checkbox-item:has(input:checked) {
+  border-color: var(--green-primary);
+  background: var(--green-whisper);
+  color: var(--green-deep);
+  font-weight: 500;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1rem;
+  background: var(--green-primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+  margin-top: 0.5rem;
+}
+.form-submit:hover { background: var(--green-mid); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+/* Calendar removed */
+
+.contact-info-box {
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--green-pale);
+}
+.contact-info-box h4 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--green-primary);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+.contact-info-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+}
+.contact-info-item svg {
+  width: 16px; height: 16px;
+  stroke: var(--green-primary);
+  fill: none;
+  flex-shrink: 0;
+}
+.contact-info-item a {
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.contact-info-item a:hover { color: var(--green-primary); }
+
+/* Form success message */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.form-success.show { display: block; }
+.form-success svg {
+  width: 56px; height: 56px;
+  stroke: var(--green-primary);
+  fill: none;
+  margin-bottom: 1rem;
+}
+.form-success h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: var(--green-deep);
+  margin-bottom: 0.5rem;
+}
+.form-success p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--green-deep);
+  color: rgba(255,255,255,0.6);
+  padding: 4rem 2rem 2rem;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+.footer-brand span { color: var(--green-light); }
+.footer-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.4);
+  max-width: 320px;
+}
+.footer h4 {
+  color: var(--white);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.6rem; }
+.footer-links a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: var(--transition);
+}
+.footer-links a:hover { color: var(--green-light); }
+
+.footer-contact-item {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.88rem;
+}
+.footer-contact-item svg {
+  width: 16px; height: 16px;
+  stroke: var(--green-light);
+  fill: none;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.footer-contact-item a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.footer-contact-item a:hover { color: var(--green-light); }
+
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 2rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+}
+.footer-credit { letter-spacing: 0.3px; }
+.wontech-link {
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+.wontech-link:hover { color: var(--green-light); }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ MOBILE OVERLAY ============ */
+.mobile-menu {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--green-deep);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2rem;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-menu.open { opacity: 1; pointer-events: all; }
+.mobile-menu a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+}
+.mobile-menu .close-btn {
+  position: absolute; top: 1.5rem; right: 2rem;
+  background: none; border: none;
+  color: var(--white); font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-item:nth-child(1) { grid-column: span 2; }
+  .portfolio-video { grid-column: span 2; }
+  .reviews-track { grid-template-columns: 1fr 1fr; }
+  .review-card:nth-child(3) { display: block; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 1rem 1.5rem; }
+  .nav.scrolled { padding: 0.8rem 1.5rem; }
+  .nav-links {
+    display: flex !important;
+    gap: 0;
+    flex-wrap: nowrap;
+    flex: 1;
+    margin: 0 1rem;
+    justify-content: space-evenly;
+  }
+  .nav-links a { font-size: 0.78rem; padding: 0.5rem 0.3rem; }
+  .nav-cta { padding: 0.4rem 0.8rem !important; font-size: 0.75rem !important; }
+  .nav-phone span, .nav-phone svg { display: inline; }
+
+  .hero { min-height: 90vh; }
+  .hero h1 { font-size: 2.8rem; }
+  .hero-sub { font-size: 1rem; }
+
+  .section { padding: 4.5rem 1.5rem; }
+
+  .services-grid { grid-template-columns: 1fr; }
+
+  .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  .portfolio-item:nth-child(1) { grid-column: span 2; }
+  .portfolio-video { grid-column: span 2; aspect-ratio: 16/9; }
+
+  .reviews-track { grid-template-columns: 1fr; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-photo { aspect-ratio: 16/10; }
+
+  .estimate-columns { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
+  .nav.scrolled { padding: 0.6rem 1rem; }
+  .nav-links {
+    display: flex !important;
+    gap: 0;
+    order: 3;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-top: 0.3rem;
+    flex: auto;
+    margin: 0;
+  }
+  .nav-links a { font-size: 0.68rem; padding: 0.4rem 0.2rem; }
+  .nav-cta { padding: 0.35rem 0.7rem !important; font-size: 0.7rem !important; }
+  .nav-phone { font-size: 0.7rem; }
+  .hero h1 { font-size: 2.2rem; }
+  .btn { padding: 0.8rem 1.5rem; font-size: 0.88rem; }
+  .hero-actions { flex-direction: column; }
+  .form-row { grid-template-columns: 1fr; }
+  .checkbox-group { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .stat-number { font-size: 1.8rem; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+  .portfolio-video { grid-column: span 1; }
+}
+
+/* Toast notification */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+  background: var(--green-primary);
+  color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.9rem;
+  transform: translateY(120%);
+  transition: transform 0.4s ease;
+}
+.toast.show { transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ======== NAVIGATION ======== -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Perfection<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Our Work</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="tel:6174597218" class="nav-phone">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (617) 459-7218
+    </a></li>
+    <li><a href="#estimate" class="nav-cta">Free Estimate</a></li>
+  </ul>
+</nav>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="hero">
+  <div class="hero-photo-placeholder">
+    <span class="hero-photo-placeholder-text">Replace with hero photo or video of your best work</span>
+  </div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>Where Craftsmanship Meets <em>Perfection</em></h1>
+    <div class="hero-sub">
+      <span>Nearly 20 Years of Experience</span>
+      <span class="hero-divider">•</span>
+      <span>Fully Licensed &amp; Insured</span>
+      <span class="hero-divider">•</span>
+      <span>Premium Paints &amp; Materials</span>
+      <span class="hero-divider">•</span>
+      <span>North Shore &amp; Boston</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#estimate" class="btn btn-primary">Get a Free Estimate</a>
+      <a href="tel:6174597218" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        (617) 459-7218
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- ======== SERVICES ======== -->
+<section class="section services" id="services">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Expert Services, Flawless Results</h2>
+      <p class="section-desc">Fully licensed and insured with nearly 20 years of experience. We deliver unprecedented craftsmanship using only the highest quality paints and materials — because your space deserves nothing less.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Interior Painting</h3>
+        <p>Walls, ceilings, trim, and detail work. We protect your home and deliver flawless, even finishes in any color you choose.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        </div>
+        <h3>Exterior Painting</h3>
+        <p>Comprehensive prep, premium coatings, and weather-resistant finishes that protect and beautify your property for years.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        </div>
+        <h3>Power Washing</h3>
+        <p>Restore surfaces to like-new condition. Driveways, siding, decks, and walkways — we blast away years of buildup.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h3>Staining &amp; Wood Finishing</h3>
+        <p>Bring out the natural beauty of wood surfaces with expert staining, sealing, and finishing for lasting protection.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
+        </div>
+        <h3>Residential &amp; Commercial</h3>
+        <p>From cozy homes to office buildings and retail spaces — we scale our expertise to match your project, large or small.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h3>Decks &amp; Fences</h3>
+        <p>Painting, staining, and refinishing for decks, fences, and outdoor structures. Built to withstand New England weather.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        </div>
+        <h3>Water Damage Repair</h3>
+        <p>Expert restoration of water-damaged walls, ceilings, and surfaces. We repair, prime, and refinish to eliminate all traces of damage.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Plaster Repair</h3>
+        <p>Seamless plaster patching, skim coating, and restoration. We bring damaged walls and ceilings back to a flawless, smooth finish.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+        </div>
+        <h3>Cabinet Refinishing</h3>
+        <p>Transform your kitchen or bathroom with professionally refinished cabinets. A fraction of the cost of replacement with stunning results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PORTFOLIO ======== -->
+<section class="section portfolio" id="portfolio">
+  <div class="section-inner">
+    <div class="portfolio-header reveal">
+      <div>
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title">See the Perfection Difference</h2>
+        <p class="section-desc">Browse our portfolio of completed projects. Every detail tells a story of craftsmanship.</p>
+      </div>
+      <div class="portfolio-filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Interior</button>
+        <button class="filter-btn">Exterior</button>
+        <button class="filter-btn">Residential</button>
+        <button class="filter-btn">Commercial</button>
+      </div>
+    </div>
+    <div class="portfolio-grid reveal">
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/new-england-paradise-walpole-ma-hero.jpg" alt="Colonial home exterior painting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/97e4135312bddaaa8223d491e5e304ef.jpeg" alt="Interior entryway with wainscoting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/shutterstock_727009813-scaled-e1679507207517.jpg" alt="Cape style home exterior" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/Screen_Shot_2015-04-21_at_2_42_02_PM.jpg" alt="Interior living room painting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/Apple-Ridge-2.jpg" alt="Deck staining and painting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/Modern-New-England-interior-design-ideas-by-Liana-S.jpg" alt="Modern interior painting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/download.jpeg" alt="Wood paneled room restoration" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="exterior">
+        <img src="images/img_2594.jpg" alt="Yellow colonial exterior painting" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="interior">
+        <img src="images/Featured-Blog-Image-Granite-Mile.jpg" alt="Interior with built-in bookshelves" loading="lazy">
+      </div>
+      <div class="portfolio-item" data-category="residential">
+        <img src="images/Luxury-Interior-Design-Palm-Beach-Bedroom-Progress.jpg" alt="Painting work in progress" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== REVIEWS ======== -->
+<section class="section reviews" id="reviews">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center; margin-bottom: 0;">
+      <div class="section-label" style="justify-content:center;">Testimonials</div>
+      <h2 class="section-title" style="margin:0 auto 0.5rem;">What Our Clients Say</h2>
+      <p class="section-desc" style="margin:0 auto 1.5rem;">Real feedback from homeowners and businesses across the North Shore and Boston.</p>
+      <div class="review-badges">
+      <a href="https://www.google.com/maps/place/Perfection+Painting+Co./data=!4m2!3m1!1s0x0:0x704a1201746386c5?sa=X&amp;ved=1t:2428&amp;ictx=111" target="_blank" rel="noopener" class="google-badge">
+        <svg class="google-icon" viewBox="0 0 24 24" width="22" height="22">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <div class="google-badge-text">
+          <span class="google-badge-stars">★★★★★</span>
+          <span class="google-badge-label">5.0 on Google Reviews</span>
+        </div>
+        <svg class="google-badge-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="https://www.angi.com/companylist/us/ma/ipswich/perfection-painting-co-reviews-7825318.htm" target="_blank" rel="noopener" class="google-badge angi-badge">
+        <svg class="angi-icon" viewBox="0 0 1115 1514" width="20" height="27"><path fill-rule="evenodd" fill="#ff6153" d="m1115 1367.3h-229.9l-12.1-88.8c-20.8-158.5-104.4-304.9-242.5-337.6-36.4-12-76.3-19.5-114.3-19.5-37.1 0-70.6 5.6-102.7 17.1-102.2 36.2-195 128.6-193.8 246.4 0.5 42.1 13 67.2 34.3 89.5 16.8 17.5 41.3 24.5 61.4 17.7 33.2-11.4 48.8-51.3 60.9-118.2l37.2-235.4c118 67.6 179.7 181.9 173.7 297.5q0-0.2 0-0.2c-21 103.4-65.8 216.6-200.7 263-28.4 9.9-57.8 14.5-87.1 14.5-74.9 0-149.1-30.8-203.7-87.8-60.2-63.2-93.8-140.1-94.8-238.6-2.2-235.6 192.2-446.2 442.5-479.5 2.6-0.4 5-0.4 7.4-0.7l113.4-706.2h331.3zm-307.5-587.1l-73.6-563.8h-8.2l-65.8 505.3c51.1 13.2 100.9 33.1 147.6 58.5zm-220.2 455.4zm0 0.3z"/><path fill="#a03027" d="m413.5 938.5c32.1-11.5 65.4-17.1 102.7-17.1 38 0 77.9 7.5 114.1 19.5-4.8 55.9-31.5 245.6-43.1 295.1 6-115.6-55.7-229.9-173.7-297.5z"/></svg>
+        <div class="google-badge-text">
+          <span class="google-badge-stars">★★★★★</span>
+          <span class="google-badge-label">5.0 on Angi</span>
+        </div>
+        <svg class="google-badge-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      </div>
+    </div>
+    <div class="reviews-container reveal">
+      <div class="reviews-track">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Wendell and his team did a wonderful job painting the exterior of our house. Wendell is extremely detail oriented and a perfectionist when it comes to his craft, and his work is a reflection of that. Not only was the quality of the job excellent but the professionalism exceeded our expectations. The team at Perfection Painting were neat and organized and a pleasure to have around. We love how our house looks now and would 100% use Perfection Painting again."</p>
+          <div class="review-author">
+            <div class="review-avatar">ES</div>
+            <div>
+              <div class="review-name">Emily S.</div>
+              <div class="review-location">Newburyport, MA <span class="review-source">via Google</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"We have relied on Wendell's painting for 22 years over several homes. His work is meticulous, he cleans up carefully, is punctual and his prices are good. Highly recommend."</p>
+          <div class="review-author">
+            <div class="review-avatar">TC</div>
+            <div>
+              <div class="review-name">Tina Cassidy</div>
+              <div class="review-location">Boston, MA <span class="review-source">via Google</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"I hired Perfection Painting to paint my entire condo, including the ceiling, trim, and doors. Wendell and his team did an amazing job and I am so happy with how my home looks now. They were always on time and took care to clean up after themselves. The time and detail they put into the prep is evident in the final result. I highly recommend Perfection Painting to anyone looking to have quality painting done."</p>
+          <div class="review-author">
+            <div class="review-avatar">AB</div>
+            <div>
+              <div class="review-name">Amber Baruffa</div>
+              <div class="review-location">East Boston, MA <span class="review-source">via Google</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 4 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Wendell was very professional, did a great job, worked long hours and even though he was painting the interior of my Doggie Daycare/Hotel which is open 7 days a week, 24 hours a day, his presence was never an intrusion. My clients have mentioned what a great job he did. He finished ahead of schedule and on budget."</p>
+          <div class="review-author">
+            <div class="review-avatar">LD</div>
+            <div>
+              <div class="review-name">Laura D.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 5 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"Wendell is exceptionally professional and hardworking and we are pleased with the work he provided at our home."</p>
+          <div class="review-author">
+            <div class="review-avatar">AM</div>
+            <div>
+              <div class="review-name">Alison M.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 6 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"We researched several companies and were impressed by the confidence shown by Wendell. He is professional and beyond helpful. The bid was reasonable and very detailed. There was never any pressure from him. Wendell did a fabulous job — meticulous and carefully cleaned up at the end of each day. I love the way our house looks now! We highly recommend Perfection Painting."</p>
+          <div class="review-author">
+            <div class="review-avatar">LB</div>
+            <div>
+              <div class="review-name">Lourival B.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 7 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"They were always on time, cleaned up every day before leaving and finished the job on time. Wendell really lives up to his company's name — he is a perfectionist and very much an awesome professional, who goes above and beyond. A true home makeover!"</p>
+          <div class="review-author">
+            <div class="review-avatar">SC</div>
+            <div>
+              <div class="review-name">Sheila C.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Review 8 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-text">"They did an excellent job, very professional, always on time and very detail-oriented. Their preparation is second to none. After they left, everything was nice and clean. They didn't leave any mess behind."</p>
+          <div class="review-author">
+            <div class="review-avatar">AC</div>
+            <div>
+              <div class="review-name">Alex C.</div>
+              <div class="review-location"><span class="review-source">via Angi</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ABOUT ======== -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo reveal">
+        Photo of Wendell / Team
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">About Us</div>
+        <h2>Built on Quality.<br>Driven by Pride.</h2>
+        <p>
+          Perfection Painting was founded by <strong>Wendell Nunes</strong> with a simple belief: every surface deserves to be treated with care, skill, and respect. With nearly 20 years of hands-on experience, what started as a dedication to flawless finishes has grown into a trusted name across the North Shore and Boston.
+        </p>
+        <p>
+          We are fully licensed and insured, committed to unprecedented craftsmanship using only the highest quality paints and materials. Whether it's a family home, a commercial storefront, or a weathered deck, we bring the same level of precision and professionalism to every job. Our clients don't just get a paint job — they get the peace of mind that comes with working with someone who treats their property like his own.
+        </p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-number">30</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div>
+            <div class="stat-number">5★</div>
+            <div class="stat-label">Google Rating</div>
+          </div>
+          <div>
+            <div class="stat-number">✓</div>
+            <div class="stat-label">Licensed &amp; Insured</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ESTIMATE ======== -->
+<section class="section estimate" id="estimate">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center; margin-bottom:0;">
+      <div class="section-label" style="justify-content:center;">Book Now</div>
+      <h2 class="section-title">Schedule Your Free Estimate</h2>
+      <p class="section-desc" style="margin:0 auto;">Fill out the form and pick a date that works for you. We'll confirm within 24 hours.</p>
+    </div>
+    <div class="estimate-layout reveal">
+      <!-- Left Column: Contact Fields + Project Details -->
+      <div>
+        <form id="estimateForm">
+          <div class="estimate-columns">
+            <div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" class="form-input" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-input" name="phone" required placeholder="(000) 000-0000">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-input" name="email" required placeholder="you@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Property Address</label>
+                <input type="text" class="form-input" name="address" placeholder="123 Main St, Gloucester, MA">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Project Details</label>
+                <textarea class="form-textarea" name="details" placeholder="Tell us about your project — size, rooms, any special requests..."></textarea>
+              </div>
+            </div>
+            <!-- Right Column: Services Checklist + Contact -->
+            <div>
+              <div class="form-group">
+                <label class="form-label">Services Needed (select all that apply)</label>
+                <div class="checkbox-group checkbox-group--single">
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Interior Painting"><span class="checkmark"></span>Interior Painting</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Exterior Painting"><span class="checkmark"></span>Exterior Painting</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Power Washing"><span class="checkmark"></span>Power Washing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Staining & Wood Finishing"><span class="checkmark"></span>Staining &amp; Wood Finishing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Deck & Fence"><span class="checkmark"></span>Deck &amp; Fence</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Water Damage Repair"><span class="checkmark"></span>Water Damage Repair</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Plaster Repair"><span class="checkmark"></span>Plaster Repair</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Cabinet Refinishing"><span class="checkmark"></span>Cabinet Refinishing</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Commercial"><span class="checkmark"></span>Commercial</label>
+                  <label class="checkbox-item"><input type="checkbox" name="services" value="Other"><span class="checkmark"></span>Other</label>
+                </div>
+              </div>
+              <div class="contact-info-box">
+                <h4>Contact Directly</h4>
+                <div class="contact-info-item">
+                  <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  <a href="tel:6174597218">(617) 459-7218</a>
+                </div>
+                <div class="contact-info-item">
+                  <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
+                </div>
+                <div class="contact-info-item">
+                  <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>North Shore &amp; Boston, MA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Full Width: Contact Info + Submit -->
+          <div class="estimate-bottom">
+            <button type="submit" class="form-submit">Request Estimate →</button>
+          </div>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3>Request Received!</h3>
+          <p>We will review your request and get back to you within 24 hours to confirm your estimate appointment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Perfection<span>.</span></div>
+        <p class="footer-desc">Premium painting services for homes and businesses across the North Shore and Boston. Quality craftsmanship, every time.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Our Work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#estimate">Get Estimate</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Interior Painting</a></li>
+          <li><a href="#services">Exterior Painting</a></li>
+          <li><a href="#services">Power Washing</a></li>
+          <li><a href="#services">Staining</a></li>
+          <li><a href="#services">Decks &amp; Fences</a></li>
+          <li><a href="#services">Water Damage Repair</a></li>
+          <li><a href="#services">Plaster Repair</a></li>
+          <li><a href="#services">Cabinet Refinishing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:6174597218">(617) 459-7218</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:perfectionpaintingusa@gmail.com">perfectionpaintingusa@gmail.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>North Shore &amp; Boston, MA</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Perfection Painting. All rights reserved.</span>
+      <span class="footer-credit">Designed &amp; Managed by <a href="#" class="wontech-link">WONTECH</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
+  <div class="lightbox-content">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  </div>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+/* ========================================
+   PERFECTION PAINTING USA — SITE JS
+   ======================================== */
+
+// ---- NAV SCROLL ----
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ---- SCROLL REVEAL ----
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); }});
+}, { threshold: 0.15 });
+reveals.forEach(el => observer.observe(el));
+
+// ---- FILTER BUTTONS ----
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.textContent.toLowerCase().trim();
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      if (filter === 'all' || item.dataset.category === filter) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// ---- LIGHTBOX ----
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCounter = document.getElementById('lightboxCounter');
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function getLightboxImages() {
+  return [...document.querySelectorAll('.portfolio-item:not(.hidden) img')];
+}
+
+function openLightbox(index) {
+  lightboxImages = getLightboxImages();
+  lightboxIndex = index;
+  lightboxImg.src = lightboxImages[lightboxIndex].src;
+  lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function showImage(dir) {
+  lightboxImages = getLightboxImages();
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  lightboxImg.src = lightboxImages[lightboxIndex].src;
+  lightboxCounter.textContent = (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+}
+
+document.querySelector('.portfolio-grid').addEventListener('click', (e) => {
+  const item = e.target.closest('.portfolio-item');
+  if (!item) return;
+  const visibleImages = getLightboxImages();
+  const img = item.querySelector('img');
+  const index = visibleImages.indexOf(img);
+  if (index !== -1) openLightbox(index);
+});
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev').addEventListener('click', () => showImage(-1));
+document.getElementById('lightboxNext').addEventListener('click', () => showImage(1));
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target.classList.contains('lightbox-content')) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showImage(-1);
+  if (e.key === 'ArrowRight') showImage(1);
+});
+
+// Touch swipe support
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+lightbox.addEventListener('touchend', (e) => {
+  const diff = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(diff) > 50) showImage(diff > 0 ? -1 : 1);
+});
+
+// ---- TOAST ----
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ---- FORM SUBMISSION ----
+/*
+  EMAIL NOTIFICATION SETUP:
+  To make form submissions notify Wendell via email, connect one of these services:
+
+  OPTION 1 — Formspree (easiest):
+  1. Go to formspree.io, create free account
+  2. Create a new form, set email to perfectionpaintingusa@gmail.com
+  3. Replace the form action below with your Formspree endpoint URL
+  4. Change the fetch URL in handleSubmit to your Formspree URL
+
+  OPTION 2 — EmailJS:
+  1. Go to emailjs.com, create free account
+  2. Connect Gmail (perfectionpaintingusa@gmail.com)
+  3. Create an email template
+  4. Add EmailJS SDK script and update handleSubmit with your IDs
+
+  OPTION 3 — Netlify Forms (if hosted on Netlify):
+  1. Add netlify attribute to <form>
+  2. Notifications auto-configured in Netlify dashboard
+
+  For now, the form shows a success message locally as a demo.
+*/
+document.getElementById('estimateForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const form = this;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  
+  // Collect all checked services into a single string
+  const checkedServices = [...form.querySelectorAll('input[name="services"]:checked')]
+    .map(cb => cb.value).join(', ');
+  data.services = checkedServices || 'None selected';
+
+  // Add local submission time in EST
+  data.submitted_at = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'full', timeStyle: 'short' });
+  
+  // WONTech integrated backend — replaces Formspree
+  const API_URL = 'https://app.wontech.com/api/public/leads/perfection-painting';
+
+  fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(r => r.json()).then(result => {
+    if (result.success) showSuccess();
+    else showToast(result.errors ? result.errors.join(' ') : 'Something went wrong. Please call us at (617) 459-7218.');
+  }).catch(() => showToast('Something went wrong. Please call us at (617) 459-7218.'));
+  
+  function showSuccess() {
+    form.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    showToast('Estimate request sent!');
+  }
+});
+</script>
+</body>
+</html>
